@@ -1,8 +1,15 @@
 import React from 'react'
+import MenuBar from './MenuBar';
+
 
 function Admin() {
+
   return (
-    <div>Welcome to Admin Page </div>
+    <div>
+      <MenuBar />
+      <h1>Welcome to Admin Page</h1>
+
+    </div>
   )
 }
 

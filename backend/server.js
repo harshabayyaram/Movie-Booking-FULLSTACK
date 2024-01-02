@@ -46,7 +46,7 @@ const verifyUser = (req, res, next) => {
 
 
 app.get("/", verifyUser, (req, res) => {
-  if (req.session.name) {
+  if (req.session.role) {
     return res.json({ valid: true, role: req.session.role })
   } else {
     return res.json({ valid: false })
