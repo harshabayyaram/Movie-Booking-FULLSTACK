@@ -1,7 +1,8 @@
-import React, { useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import validation from "./LoginValidations";
 import Axios from "axios";
+import axios from "axios";
 
 
 function Login() {
@@ -20,15 +21,31 @@ function Login() {
 
   }
 
+  Axios.defaults.withCredentials = true;
+
+  useEffect(() => {
+    axios.get("http://localhost:8080/")
+      .then(res => {
+        console.log(res);
+        if (res.data.valid) {
+          Navigate("/");//moves to home component
+        }
+        else {
+          Navigate("/login");
+        }
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.email === "" && errors.password === "") {
       Axios.post("http://localhost:8080/login", values)
         .then(res => {
-          if(res.data === "Success"){
-            Navigate("/home")
-          }else{
+          if (res.data.login) {
+            Navigate("/");
+          } else {
             alert("No record found");
             window.location.reload();
           }
