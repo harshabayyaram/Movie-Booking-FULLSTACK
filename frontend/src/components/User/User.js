@@ -10,8 +10,6 @@ function User() {
       <MenuBar />
       <h1>Welcome to User Page</h1>
       <MoviesList />
-      {/* <UserMovies /> */}
-
 
     </div>
   )

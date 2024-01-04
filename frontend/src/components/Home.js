@@ -20,8 +20,8 @@ function Home() {
         // console.log(res);
         if (res.data.valid) {
           setRole(res.data.role);
-          console.log(res.data,"rwss")
-          localStorage.setItem(res.data.id,"userId");
+          // console.log(res.data,"rwss")
+          
           // console.log(res.data.role);
           setAuth(true);
         }

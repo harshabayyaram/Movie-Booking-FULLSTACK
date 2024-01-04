@@ -4,10 +4,11 @@ import React from 'react'
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
 function MenuBar() {
-  const handleDelete = () => {
+  const handleLogout = () => {
     Axios.get("http://localhost:8080/logout")
       .then(res => {
         window.location.reload();
+        localStorage.clear();
       })
       .catch(err => console.log(err));
   }
@@ -17,7 +18,7 @@ function MenuBar() {
         <Container>
           <Navbar.Brand href="#home">Cinema Booking</Navbar.Brand>
           <Nav className="ms-auto">
-            <Nav.Link ><button className='btn btn-danger' onClick={handleDelete}>Logout</button></Nav.Link>
+            <Nav.Link ><button className='btn btn-danger' onClick={handleLogout}>Logout</button></Nav.Link>
           </Nav>
         </Container>
       </Navbar>
