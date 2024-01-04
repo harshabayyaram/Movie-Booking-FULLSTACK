@@ -1,21 +1,24 @@
 const express = require("express");
 const app = express();
-const mysql = require("mysql");
 const cors = require("cors");
 const db = require("./db");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const jwt = require("jsonwebtoken");
+const initializeDatabase = require("./dbInit");
+initializeDatabase();
 
 app.use(cors({
   origin: ["http://localhost:3000"],
-  methods: ["POST", "GET"],
+  methods: ["POST", "GET", "DELETE"],
   credentials: true
 }));
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
+
+
 
 app.use(session({
   secret: "secret",
@@ -54,7 +57,7 @@ app.get("/", verifyUser, (req, res) => {
 })
 
 app.post("/signup", (req, res) => {
-  const sql = "INSERT INTO users (name, email, password) VALUES (?, ?, ?)";
+  const sql = "INSERT INTO users (name, email, password,role) VALUES (?, ?, ?,'user')";
   const values = [req.body.name, req.body.email, req.body.password];
   db.query(sql, values, (err, data) => {
     if (err) {
@@ -82,6 +85,8 @@ app.post("/login", (req, res) => {
         req.session.role = data[0].role;
         // console.log(req.session.name);
         const name = data[0].name;
+        const idid = data[0].id;
+        console.log(idid, "idd");
         const token = jwt.sign({ name }, "jwt-secret-token", { expiresIn: '1d' });
         res.cookie('token', token);
         return res.json({ login: true, name: req.session.name });
@@ -94,9 +99,43 @@ app.post("/login", (req, res) => {
 
 app.get("/logout", (req, res) => {
   res.clearCookie('token')
-  // return res.json({ Status: "Success" })
   return res.json({ Status: "Success" })
 })
+
+
+//admin
+app.get('/admin/users', (req, res) => {
+  db.query('SELECT * FROM users', (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json(results);
+  });
+});
+
+app.delete('/admin/users/:id', (req, res) => {
+  const userId = req.params.id;
+  db.query('DELETE FROM users WHERE id = ?', userId, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json({ message: 'User deleted successfully' });
+  });
+});
+
+//movies
+
+app.get('/admin/movies', (req, res) => {
+  db.query('SELECT * FROM movies', (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json(results);
+  });
+});
 
 db.query("select 1", (err, res) => {
   if (err) {

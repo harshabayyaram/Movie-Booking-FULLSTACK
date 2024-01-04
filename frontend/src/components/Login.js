@@ -26,9 +26,9 @@ function Login() {
   useEffect(() => {
     axios.get("http://localhost:8080/")
       .then(res => {
-        console.log(res);
+        // console.log(res);
         if (res.data.valid) {
-          Navigate("/");//moves to home component
+          Navigate("/");
         }
         else {
           Navigate("/login");
