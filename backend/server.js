@@ -196,11 +196,12 @@ app.get('/admin/managebookings', (req, res) => {
 
 //each user booking list ***********************************
 // Endpoint to fetch user bookings
-app.get('/api/userbookings', (req, res) => {
-  const userId = req.query.userId;
+app.get('/api/userbookings/:id', (req, res) => {
+  const userId = req.params.id;
+  console.log(req.params.id);
 
   const getUserBookingsQuery = `
-    SELECT u.id, m.movie_name AS movieName, m.movie_date AS date, m.movie_time AS time
+    SELECT u.id AS userId, m.id AS movieId, m.movie_name AS movieName, m.movie_date AS date, m.movie_time AS time
     FROM users u
     JOIN userandmovies um ON u.id = um.userId
     JOIN movies m ON um.movieid = m.id
@@ -217,22 +218,23 @@ app.get('/api/userbookings', (req, res) => {
 });
 
 // Endpoint to delete a booking
-app.delete('/api/deletebooking', (req, res) => {
-  const { userId, bookingId } = req.query;
+app.delete('/api/deletebooking/:userId/:movieId', (req, res) => {
+  const { userId, movieId } = req.params;
+  console.log(req.params,"dafad");
 
   const deleteBookingQuery = `
     DELETE FROM userandmovies
-    WHERE userId = ${userId} AND id = ${bookingId}
+    WHERE userId = ${userId} AND movieid = ${movieId}
   `;
 
   db.query(deleteBookingQuery, (err, result) => {
     if (err) {
-      res.status(500).json({ error: 'Error deleting booking' });
+      res.status(500).json({ error: 'Error deleting booking BE' });
     } else {
       if (result.affectedRows === 0) {
         res.status(404).json({ message: 'No matching booking found to delete' });
       } else {
-        res.json({ message: `Booking with ID ${bookingId} deleted successfully` });
+        res.json({ message: `Booking with ID ${movieId} deleted successfully` });
       }
     }
   });
