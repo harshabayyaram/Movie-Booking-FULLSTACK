@@ -137,6 +137,51 @@ app.get('/admin/movies', (req, res) => {
   });
 });
 
+app.delete('/admin/movies/:id', (req, res) => {
+  const movieId = req.params.id;
+  db.query('DELETE FROM movies WHERE id = ?', movieId, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json({ message: 'Movie deleted successfully' });
+  });
+});
+
+
+
+//book ticket small table
+
+app.post("/book-ticket", (req, res) => {
+  const sql = "INSERT INTO userandmovies (userId, movieId) VALUES (?, ?)";
+  console.log("data got in book ticket " + req.body[0] + req.body[1]);
+  const values = [req.body[0], req.body[1]];
+  db.query(sql, values, (err, data) => {
+    if (err) {
+      console.log("Error book ticket sending from server", err);
+      return res.json("error");
+    }
+    else {
+      console.log("ticket data moved to the backed with userID and movieID");
+      return res.json(data);
+    }
+  });
+});
+
+//manage boookings admin
+
+app.get('/admin/managebookings', (req, res) => {
+  const sql = 'SELECT u.name AS userName, m.movie_name, m.movie_date, m.movie_time, m.movie_amount FROM users u CROSS JOIN userandmovies um LEFT JOIN movies m ON m.id = um.movieid WHERE u.id = um.userId;'
+  db.query(sql, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json(results);
+  });
+});
+
+
 db.query("select 1", (err, res) => {
   if (err) {
     console.log(err);

@@ -95,6 +95,23 @@ function initializeDatabase() {
 
 
   });
+
+
+  //mapping table query
+  const userAndMoviesTableQuery = `
+    CREATE TABLE IF NOT EXISTS userandmovies (
+      id INT NOT NULL AUTO_INCREMENT,
+      userId INT NULL,
+      movieid INT NULL,
+      PRIMARY KEY (id)
+    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `;
+
+  //mapping table execution
+  db.query(userAndMoviesTableQuery, (err, results) => {
+    if (err) throw err;
+    console.log("UserAndMovies table created.");
+  });
 }
 
 module.exports = initializeDatabase;

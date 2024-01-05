@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from "react-router-dom";
+
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
@@ -24,11 +24,12 @@ const UserList = () => {
             console.error('Error deleting user:', error);
         }
     };
+    console.log(users);
 
     return (
         <div>
-            <div className="d-flex bg-primary justify-content-center align-items-center">
-                <div className="p-4 bg-white rounded">
+            <div className="d-flex justify-content-center align-items-center">
+                <div className="bg-white rounded">
                     <table className='table'>
                         <thead>
                             <tr>
