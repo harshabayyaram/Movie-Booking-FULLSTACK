@@ -44,14 +44,14 @@ const MoviesList = () => {
     }
 
     return (
-        <div>
-            <div className='d-flex justify-content-around'>
+        <div className="container">
+            <div className="row">
                 {movies.map(movie => (
-                    <div key={movie.id}>
+                    <div key={movie.id} className="col-md-3 mb-4">
                         <Row>
                             <Col>
                                 <Card style={{ width: '15rem' }}>
-                                    <Card.Img variant="top" src={movie.image_url} style={{ height: '18rem' }} />
+                                    <Card.Img variant="top" src={movie.image_url} style={{ height: '15rem' }} />
                                     <Card.Body>
                                         <Card.Title>{movie.movie_name}</Card.Title>
                                         <Card.Text>

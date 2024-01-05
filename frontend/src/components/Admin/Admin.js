@@ -1,8 +1,6 @@
 import React, { useState } from 'react';
-import Menubar from "../MenuBar";
-// import { Card, Row, Col } from 'react-bootstrap';
+import Menubar from "./AdminMenuBar";
 import { Card, Row, Col, Modal, Button } from 'react-bootstrap';
-import { Route, Link, Routes } from 'react-router-dom';
 
 import UserList from './UserList';
 import Bookings from './ManageBookings';

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
 
-function MenuBar() {
+function AdminMenuBar() {
   const handleLogout = () => {
     Axios.get("http://localhost:8080/logout")
       .then(res => {
@@ -26,4 +26,4 @@ function MenuBar() {
   )
 }
 
-export default MenuBar
+export default AdminMenuBar

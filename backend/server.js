@@ -114,6 +114,7 @@ app.get('/admin/users', (req, res) => {
   });
 });
 
+
 app.delete('/admin/users/:id', (req, res) => {
   const userId = req.params.id;
   db.query('DELETE FROM users WHERE id = ?', userId, (error, results) => {
@@ -145,6 +146,17 @@ app.delete('/admin/movies/:id', (req, res) => {
       return;
     }
     res.json({ message: 'Movie deleted successfully' });
+  });
+});
+
+app.get('/admin/users/:id', (req, res) => {
+  const userId = req.params.id;
+  db.query('SELECT * FROM users where id= ?', userId, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json(results);
   });
 });
 
@@ -180,6 +192,53 @@ app.get('/admin/managebookings', (req, res) => {
     res.json(results);
   });
 });
+
+
+//each user booking list ***********************************
+// Endpoint to fetch user bookings
+app.get('/api/userbookings', (req, res) => {
+  const userId = req.query.userId;
+
+  const getUserBookingsQuery = `
+    SELECT u.id, m.movie_name AS movieName, m.movie_date AS date, m.movie_time AS time
+    FROM users u
+    JOIN userandmovies um ON u.id = um.userId
+    JOIN movies m ON um.movieid = m.id
+    WHERE u.id = ${userId}
+  `;
+
+  db.query(getUserBookingsQuery, (err, results) => {
+    if (err) {
+      res.status(500).json({ error: 'Error fetching user bookings' });
+    } else {
+      res.json(results);
+    }
+  });
+});
+
+// Endpoint to delete a booking
+app.delete('/api/deletebooking', (req, res) => {
+  const { userId, bookingId } = req.query;
+
+  const deleteBookingQuery = `
+    DELETE FROM userandmovies
+    WHERE userId = ${userId} AND id = ${bookingId}
+  `;
+
+  db.query(deleteBookingQuery, (err, result) => {
+    if (err) {
+      res.status(500).json({ error: 'Error deleting booking' });
+    } else {
+      if (result.affectedRows === 0) {
+        res.status(404).json({ message: 'No matching booking found to delete' });
+      } else {
+        res.json({ message: `Booking with ID ${bookingId} deleted successfully` });
+      }
+    }
+  });
+});
+
+// done *******************************************
 
 
 db.query("select 1", (err, res) => {

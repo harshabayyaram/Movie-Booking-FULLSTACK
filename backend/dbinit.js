@@ -26,24 +26,42 @@ function initializeDatabase() {
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
   `;
 
-  //query for insertion into movies table in sql
+  //query for insertion of demo data into movies table in sql
   const moviesInsertQuery = `
     INSERT IGNORE INTO movies (movie_name, movie_actor, movie_time, movie_date, movie_status, movie_amount, image_url)
     VALUES 
-    ('saalar', 'prabhas', '10:30', '2024-01-03', 'block buster', '100', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQs0lsPPE6Bz2_YrhtcpniobzbXmNoxplVP1wKR_nEBCugHzfdV'),
-    ('Devil', 'hero', '10:50', '2024-01-04', 'good', '200', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devil-the-british-secret-agent-et00312544-1703578193.jpg'),
-    ('Dunki', 'heroo', '12:00', '2024-01-05', 'blockbuster', '100', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/dunki-et00326964-1703064829.jpg');
+    ('salaar', 'prabhas', '10:30', '2024-01-03', 'block buster', '100', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQs0lsPPE6Bz2_YrhtcpniobzbXmNoxplVP1wKR_nEBCugHzfdV'),
+    ('Devil', 'Kalyan Ram', '10:50', '2024-01-04', 'good', '200', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devil-the-british-secret-agent-et00312544-1703578193.jpg'),
+    ('Dunki', 'Sharakuh khan', '12:00', '2024-01-05', 'blockbuster', '100', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/dunki-et00326964-1703064829.jpg'),
+    ('Baahubali: The Beginning', 'Prabhas', '12:00', '2015-07-10', 'blockbuster', '95', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTANLW6o_XKmdd3zyIgBRb0OyEeqwB54QWJ7ZgJteucuSIZSEZE'),
+    ('Arjun Reddy', 'Vijay Deverakonda', '12:00', '2017-08-25', 'blockbuster', '90', 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202208/arjun_reddy_5_1200x768.jpeg?VersionId=3H0leVN0O69r2CgJ5NRuwn823LhAZht9&size=690:388'),
+    ('Rangasthalam', 'Ram Charan', '12:00', '2018-03-30', 'blockbuster', '92', 'https://contentserver.com.au/assets/644754_rangasthalam_v8.jpg'),
+    ('AlaVaikunthapuramu', 'Allu Arjun', '12:00', '2020-01-12', 'blockbuster', '94', 'https://upload.wikimedia.org/wikipedia/en/2/28/Ala_Vaikunthapurramuloo.jpeg'),
+    ('Pushpa: The Rise', 'Allu Arjun', '12:00', '2021-12-17', 'blockbuster', '93', 'https://assetscdn1.paytm.com/images/cinema/6-gallery-ef137e80-4228-11ec-96cd-1bf51c099a46.jpg'),
+    ('Vakeel Saab', 'Pawan Kalyan', '12:00', '2021-04-09', 'blockbuster', '91', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLDwGdPdKz23Ae6pwm8GrtTgw4p1solHu_tMOwQ8-lnk9Vlm25'),
+    ('Love Story', 'Naga Chaitanya', '12:00', '2021-09-24', 'blockbuster', '88', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSVEk6xd0PXrVfNwjDn7r_vHH7qEWKKD2ZkD6C1jMlrP9zoLwIh'),
+    ('Tuck Jagadish', 'Nani', '12:00', '2021-09-10', 'blockbuster', '86', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIvKHgEUHeUJzolSlHVv3jYQlq1vUT_nzn7S3tBj9rYiws8EaU'),
+    ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU'),
+    ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU'),
+    ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU'),
+    ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU')
+    
   `;
-  //query for insertion into Users table in sql
+
+  //query for insertion demo data into Users table in sql
   const usersInsertQuery = `
     INSERT IGNORE INTO users (name, email, password, role)
     VALUES 
-    ('Raju', 'Raju@gmail.com', 'Raju', 'user'),
-    ('Ramu', 'Ramu@gmail.com', 'Ramu', 'user'),
-    ('Ragu', 'Ragu@gmail.com', 'Ragu', 'user'),
-    ('Manjula', 'Manjula@gmail.com', 'Manjula12345', 'user'),
-    ('Harsha', 'bayyaramharsha@gmail.com', 'bayyaramharsha', 'admin'),
-    ('Kaveri', 'kaveri2092k@gmail.com', 'kaveri2092k', 'user');
+    ('Ramu', 'Ramu@gmail.com', 'Ramu@gmail.com', 'user'),
+    ('Ragu', 'Ragu@gmail.com', 'Ragu@gmail.com', 'user'),
+    ('Manjula', 'Manjula@gmail.com', 'Manjula@gmail.com', 'user'),
+    ('Harsha', 'bayyaramharsha@gmail.com', 'bayyaramharsha@gmail.com', 'admin'),
+    ('Admin', 'admin@gmail.com', 'admin@gmail.com', 'admin'),
+    ('Kaveri', 'kaveri2092k@gmail.com', 'kaveri2092k@gmail.com', 'user'),
+    ('Alice', 'alice@example.com', 'alice@example.com', 'user'),
+    ('Bob', 'bob@example.com', 'bob@example.com', 'user'),
+    ('Charlie', 'charlie@example.com', 'charlie@example.com', 'user'),
+    ('David', 'david@example.com', 'david@example.com', 'user');
   `;
 
   //working with users table creation and user table demo data insertion
@@ -112,6 +130,7 @@ function initializeDatabase() {
     if (err) throw err;
     console.log("UserAndMovies table created.");
   });
+
 }
 
 module.exports = initializeDatabase;
