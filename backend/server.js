@@ -220,7 +220,7 @@ app.get('/api/userbookings/:id', (req, res) => {
 // Endpoint to delete a booking
 app.delete('/api/deletebooking/:userId/:movieId', (req, res) => {
   const { userId, movieId } = req.params;
-  console.log(req.params,"dafad");
+  console.log(req.params, "dafad");
 
   const deleteBookingQuery = `
     DELETE FROM userandmovies

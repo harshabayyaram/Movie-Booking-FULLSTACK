@@ -42,10 +42,8 @@ function initializeDatabase() {
     ('Love Story', 'Naga Chaitanya', '12:00', '2021-09-24', 'blockbuster', '88', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcSVEk6xd0PXrVfNwjDn7r_vHH7qEWKKD2ZkD6C1jMlrP9zoLwIh'),
     ('Tuck Jagadish', 'Nani', '12:00', '2021-09-10', 'blockbuster', '86', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTIvKHgEUHeUJzolSlHVv3jYQlq1vUT_nzn7S3tBj9rYiws8EaU'),
     ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU'),
-    ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU'),
-    ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU'),
-    ('Acharya', 'Chiranjeevi', '12:00', '2022-01-14', 'blockbuster', '90', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDpTrrRAgjSY-zrPqL5awtjSnkG-tibw1xew&usqp=CAU')
-    
+    ('Macharala', 'Nithin', '12:00', '2022-01-14', 'blockbuster', '100', 'https://upload.wikimedia.org/wikipedia/en/thumb/3/35/Macherla_Niyojakavargam_Poster.jpg/220px-Macherla_Niyojakavargam_Poster.jpg'),
+    ('Kushi', 'Vijay', '12:00', '2022-01-14', 'blockbuster', '200', 'https://static.toiimg.com/photo/msid-103272997/103272997.jpg?75170');
   `;
 
   //query for insertion demo data into Users table in sql
@@ -126,10 +124,10 @@ function initializeDatabase() {
   `;
 
   //mapping table execution
-  db.query(userAndMoviesTableQuery, (err, results) => {
-    if (err) throw err;
-    console.log("UserAndMovies table created.");
-  });
+  // db.query(userAndMoviesTableQuery, (err, results) => {
+  //   if (err) throw err;
+  //   console.log("UserAndMovies table created.");
+  // });
 
 }
 
