@@ -6,5 +6,6 @@ const Connection = mysql.createPool({
     password: "root",
     database: "movie_booking",
   });
+  
 
 module.exports = Connection;
