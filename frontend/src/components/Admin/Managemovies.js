@@ -1,9 +1,25 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import AddMovie from "./AddMovie"
+import EditMovie from "./EditMovie"
+import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 
 
 const Managemovies = () => {
   const [movies, setMovies] = useState([]);
+  const [selectedComponent, setSelectedComponent] = useState(null);
+
+  const addMovie = () => {
+    setSelectedComponent(<AddMovie />);
+  };
+
+  const editMovie = () => {
+    setSelectedComponent(<EditMovie />)
+  }
+
+  const handleClose = () => {
+    setSelectedComponent(null);
+  };
 
   useEffect(() => {
     axios.get('http://localhost:8080/admin/movies')
@@ -24,10 +40,27 @@ const Managemovies = () => {
       console.error('Error deleting movies:', error);
     }
   };
+
+  const MovieAddEdit = (event) => {
+    editMovie();
+    handleEdit(event);
+  }
+
+  const handleEdit = (event) => {
+    
+  }
+
   console.log(movies);
 
   return (
     <div>
+      <Container className="text-center">
+        <Row>
+          <Col className='p-3'>
+            <Button variant="primary" onClick={addMovie}>Add Movie</Button>
+          </Col>
+        </Row>
+      </Container>
       <div className="d-flex justify-content-center align-items-center">
         <div className="bg-white rounded">
           <table className='table'>
@@ -39,6 +72,7 @@ const Managemovies = () => {
                 <th className='bg-black text-white'>movie_date</th>
                 <th className='bg-black text-white'>movie_amount</th>
                 <th className='bg-black text-white'>duration(hours)</th>
+                <th className='bg-black text-white'></th>
                 <th className='bg-black text-white'></th>
               </tr>
             </thead>
@@ -53,6 +87,14 @@ const Managemovies = () => {
                   <td>{data.duration}</td>
                   <td>
                     <button
+                      className="btn btn-primary"
+                      onClick={(e) => MovieAddEdit(data.id)}
+                    >
+                      EDIT
+                    </button>
+                  </td>
+                  <td>
+                    <button
                       className="btn btn-danger"
                       onClick={(e) => handleDelete(data.id)}
                     >
@@ -64,6 +106,24 @@ const Managemovies = () => {
             </tbody>
           </table>
         </div>
+      </div>
+
+      <div className='m-5 p-4' >
+        {selectedComponent && (
+          <Modal show={true} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+            <Modal.Header closeButton>
+              <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+            </Modal.Header>
+            <Modal.Body>
+              {selectedComponent}
+            </Modal.Body>
+            <Modal.Footer>
+              <Button variant='secondary' onClick={handleClose}>
+                Close
+              </Button>
+            </Modal.Footer>
+          </Modal>
+        )}
       </div>
 
     </div>

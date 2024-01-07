@@ -123,11 +123,11 @@ function initializeDatabase() {
     ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
   `;
 
-  //mapping table execution
-  // db.query(userAndMoviesTableQuery, (err, results) => {
-  //   if (err) throw err;
-  //   console.log("UserAndMovies table created.");
-  // });
+  // mapping table execution
+  db.query(userAndMoviesTableQuery, (err, results) => {
+    if (err) throw err;
+    console.log("UserAndMovies table created.");
+  });
 
 }
 

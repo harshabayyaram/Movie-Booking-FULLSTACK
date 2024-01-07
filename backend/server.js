@@ -243,6 +243,23 @@ app.delete('/api/deletebooking/:userId/:movieId', (req, res) => {
 // done *******************************************
 
 
+// add movie
+app.post("/addMovie", (req, res) => {
+  const sql = "INSERT INTO movies (movie_name, movie_actor, movie_time,movie_date,movie_status,movie_amount,image_url) VALUES (?, ?, ?, ?, ?, ?, ?)";
+  const values = [req.body.movietitle, req.body.movieactor, req.body.movietime, req.body.moviedate, , req.body.moviestatus, req.body.movieamount, req.body.imageurl];
+  db.query(sql, values, (err, data) => {
+    if (err) {
+      console.log("Error in backend adding movie", err);
+      return res.json("error");
+    }
+    else {
+      console.log("Data moved to movies table from backend");
+      return res.json(data);
+    }
+  });
+});
+
+
 db.query("select 1", (err, res) => {
   if (err) {
     console.log(err);

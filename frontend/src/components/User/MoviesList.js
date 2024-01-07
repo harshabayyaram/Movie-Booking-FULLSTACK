@@ -39,6 +39,7 @@ const MoviesList = () => {
         axios.post("http://localhost:8080/book-ticket", values)
             .then(res => {
                 console.log("posted from frontend");
+                alert("Movie ticket Booked");
             })
             .catch(err => { console.log(err) })
     }

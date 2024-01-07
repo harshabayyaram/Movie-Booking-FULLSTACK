@@ -77,7 +77,7 @@ function Admin() {
       </div>
       <div className='m-5 p-4'>
         {selectedComponent && (
-          <Modal show={true} onHide={handleClose} size="xl">
+          <Modal show={true} onHide={handleClose} size="xl" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
             <Modal.Header closeButton>
               <Modal.Title></Modal.Title>
             </Modal.Header>
