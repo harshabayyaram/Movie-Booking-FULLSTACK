@@ -15,4 +15,7 @@ ADMIN : bayyaramharsha@gmail.com
 ADMIN PASSWORD : bayyaramharsha
 
 USER : Manjula@gmail.com
-USER PASSWORD : Manjula12345
+USER PASSWORD : Manjula@gmail.com
+
+USER : kaveri2092k@gmail.com
+USER PASSWORD : kaveri2092k@gmail.com
