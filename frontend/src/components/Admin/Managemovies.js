@@ -46,8 +46,10 @@ const Managemovies = () => {
     handleEdit(event);
   }
 
-  const handleEdit = (event) => {
-    
+  const handleEdit = (movieId) => {
+    const selectedMovie = movies.find(movie => movie.id === movieId);
+    console.log(selectedMovie);
+    setSelectedComponent(<EditMovie movie={selectedMovie} handleClose={handleClose} />);
   }
 
   console.log(movies);
@@ -71,7 +73,6 @@ const Managemovies = () => {
                 <th className='bg-black text-white'>movie_time</th>
                 <th className='bg-black text-white'>movie_date</th>
                 <th className='bg-black text-white'>movie_amount</th>
-                <th className='bg-black text-white'>duration(hours)</th>
                 <th className='bg-black text-white'></th>
                 <th className='bg-black text-white'></th>
               </tr>
@@ -80,12 +81,11 @@ const Managemovies = () => {
               {movies.map((data, i) => (
                 <tr key={i}>
                   <td>{data.movie_name}</td>
-                  <td>{data.movie_actor}</td>
-                  <td>{data.movie_time}</td>
-                  <td>{data.movie_date}</td>
-                  <td>{data.movie_amount}</td>
-                  <td>{data.duration}</td>
-                  <td>
+                  <td className='text-center'>{data.movie_actor}</td>
+                  <td className='text-center'>{data.movie_time}</td>
+                  <td className='text-center'>{data.movie_date}</td>
+                  <td className='text-center'>{data.movie_amount}</td>
+                  <td className='text-center'>
                     <button
                       className="btn btn-primary"
                       onClick={(e) => MovieAddEdit(data.id)}
@@ -93,7 +93,7 @@ const Managemovies = () => {
                       EDIT
                     </button>
                   </td>
-                  <td>
+                  <td className='text-center'>
                     <button
                       className="btn btn-danger"
                       onClick={(e) => handleDelete(data.id)}

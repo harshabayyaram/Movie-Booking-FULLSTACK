@@ -11,7 +11,7 @@ initializeDatabase();
 
 app.use(cors({
   origin: ["http://localhost:3000"],
-  methods: ["POST", "GET", "DELETE"],
+  methods: ["POST", "PUT", "GET", "DELETE"],
   credentials: true
 }));
 app.use(express.json());
@@ -254,6 +254,26 @@ app.post("/addMovie", (req, res) => {
     }
     else {
       console.log("Data moved to movies table from backend");
+      return res.json(data);
+    }
+  });
+});
+
+//edit movie
+
+app.put("/editmovie/:id", (req, res) => {
+  const id = req.params.id;
+  console.log(req.body)
+  // const sql = `UPDATE movies SET movie_name = ?, movie_actor = ?, movie_time = ?, movie_date = ?, movie_status = ?, movie_amount = ?, image_url = ? WHERE id = ?`
+  const sql = `UPDATE movies SET movie_name = ?, movie_actor = ?, movie_time = ?, movie_date = ?, movie_status = ?, movie_amount = ?, image_url = ? WHERE id = ?;`
+  const values = [req.body.movietitle, req.body.movieactor, req.body.movietime, req.body.moviedate, req.body.moviestatus, req.body.movieamount, req.body.imageurl, id];
+  db.query(sql, values, (err, data) => {
+    if (err) {
+      console.log("Error in backend editing movie", err);
+      return res.json("error");
+    }
+    else {
+      console.log("Data edited in movies table from backend");
       return res.json(data);
     }
   });
