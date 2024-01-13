@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import Admin from "./Admin/Admin";
 import User from "./User/User";
 
+import image from "../images/pngtree-empty-cinema-ticket-with-popcorn-filmstrip-clapper-board-and-movie-camera-image_3623913.jpg"
+
 function Home() {
   const [role, setRole] = useState('');
   const [auth, setAuth] = useState(false);
@@ -21,7 +23,7 @@ function Home() {
         if (res.data.valid) {
           setRole(res.data.role);
           // console.log(res.data,"rwss")
-          
+
           // console.log(res.data.role);
           setAuth(true);
         }
@@ -46,7 +48,8 @@ function Home() {
 
   if (!auth) {
     return (
-      <div className="d-flex flex-column justify-content-center align-items-center vh-100">
+      // style={{ backgroundImage:`url(${image})` }}
+      <div className="d-flex flex-column justify-content-center align-items-center vh-100" >
         <Link to="/login" className="btn btn-primary col-sm-6 col-md-3">
           Login
         </Link>
@@ -74,7 +77,6 @@ function Home() {
   }
   console.log('Rendering Admin');
   return <Admin />;
-
 
 }
 

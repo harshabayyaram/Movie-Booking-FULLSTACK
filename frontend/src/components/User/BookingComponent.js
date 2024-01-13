@@ -60,7 +60,6 @@ function BookingComponent() {
                                     <td>{booking.time}</td>
                                     <td>
                                         <button onClick={() => deleteBooking(booking.movieId)} className='btn btn-primary'>Delete Booking</button>
-                                        {/* movie id kavale ikada booking.id == user.id */}
                                     </td>
                                 </tr>
                             ))}
