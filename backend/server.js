@@ -19,7 +19,6 @@ app.use(cookieParser());
 app.use(bodyParser.json());
 
 
-
 app.use(session({
   secret: "secret",
   resave: false,
@@ -29,7 +28,6 @@ app.use(session({
     maxAge: 1000 * 60 * 60 * 24,
   }
 }))
-
 
 const verifyUser = (req, res, next) => {
   const token = req.cookies.token;
@@ -46,7 +44,6 @@ const verifyUser = (req, res, next) => {
     });
   }
 };
-
 
 app.get("/", verifyUser, (req, res) => {
   if (req.session.role) {
@@ -70,7 +67,6 @@ app.post("/signup", (req, res) => {
     }
   });
 });
-
 
 app.post("/login", (req, res) => {
   const sql = "SELECT * from users WHERE email=? and password = ?";
@@ -102,7 +98,6 @@ app.get("/logout", (req, res) => {
   return res.json({ Status: "Success" })
 })
 
-
 //admin
 app.get('/admin/users', (req, res) => {
   db.query('SELECT * FROM users', (error, results) => {
@@ -113,7 +108,6 @@ app.get('/admin/users', (req, res) => {
     res.json(results);
   });
 });
-
 
 app.delete('/admin/users/:id', (req, res) => {
   const userId = req.params.id;
@@ -127,7 +121,6 @@ app.delete('/admin/users/:id', (req, res) => {
 });
 
 //movies
-
 app.get('/admin/movies', (req, res) => {
   db.query('SELECT * FROM movies', (error, results) => {
     if (error) {
@@ -159,9 +152,6 @@ app.get('/admin/users/:id', (req, res) => {
     res.json(results);
   });
 });
-
-
-
 //book ticket small table
 
 app.post("/book-ticket", (req, res) => {
@@ -179,7 +169,6 @@ app.post("/book-ticket", (req, res) => {
     }
   });
 });
-
 //manage boookings admin
 
 app.get('/admin/managebookings', (req, res) => {
@@ -192,7 +181,6 @@ app.get('/admin/managebookings', (req, res) => {
     res.json(results);
   });
 });
-
 
 //each user booking list ***********************************
 // Endpoint to fetch user bookings

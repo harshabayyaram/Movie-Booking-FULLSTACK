@@ -44,7 +44,7 @@ function Login() {
       Axios.post("http://localhost:8080/login", values)
         .then(res => {
           if (res.data.login) {
-            //set here for id in local storage
+            //set id in local storage
             localStorage.setItem("userId", res.data.id);
             Navigate("/");
           } else {

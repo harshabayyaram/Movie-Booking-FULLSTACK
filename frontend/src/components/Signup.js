@@ -28,7 +28,7 @@ function Signup() {
     if (errors.name === "" && errors.email === "" && errors.password === "") {
       Axios.post("http://localhost:8080/signup", values)
         .then(res => {
-          navigate("/login");
+          navigate("/");
           console.log("posted from frontend");
         })
         .catch(err => { console.log("Error occured posting from frontend" + err) })
