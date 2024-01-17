@@ -26,9 +26,11 @@ function Login() {
   useEffect(() => {
     axios.get("http://localhost:8080/")
       .then(res => {
-        // console.log(res);
+        console.log(res);
         if (res.data.valid) {
           Navigate("/");
+          localStorage.setItem("token",res.data.token);
+          // console.log(res.data.token);
         }
         else {
           Navigate("/login");

@@ -1,0 +1,22 @@
+
+
+.sidebar-wrap{
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+    width: 19vw;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.sidebar-bg{
+    overflow-y: scroll;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-icon{
+    margin-right: 10px;
+    width: 30px;
+}

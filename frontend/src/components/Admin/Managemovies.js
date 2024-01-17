@@ -3,6 +3,8 @@ import axios from 'axios';
 import AddMovie from "./AddMovie"
 import EditMovie from "./EditMovie"
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
+import AdminMenuBar from './AdminMenuBar';
+import SideBar from './SideBar';
 
 
 const Managemovies = () => {
@@ -55,74 +57,83 @@ const Managemovies = () => {
 
   return (
     <div>
-      <Container className="text-center">
-        <Row>
-          <Col className='p-3'>
-            <Button variant="primary" onClick={addMovie}>Add Movie</Button>
-          </Col>
-        </Row>
-      </Container>
-      <div className="d-flex justify-content-center align-items-center">
-        <div className="bg-white rounded">
-          <table className='table'>
-            <thead>
-              <tr>
-                <th className='bg-black text-white' >movie_name</th>
-                <th className='bg-black text-white'>movie_actor</th>
-                <th className='bg-black text-white'>movie_time</th>
-                <th className='bg-black text-white'>movie_date</th>
-                <th className='bg-black text-white'>movie_amount</th>
-                <th className='bg-black text-white'></th>
-                <th className='bg-black text-white'></th>
-              </tr>
-            </thead>
-            <tbody>
-              {movies.map((data, i) => (
-                <tr key={i}>
-                  <td>{data.movie_name}</td>
-                  <td className='text-center'>{data.movie_actor}</td>
-                  <td className='text-center'>{data.movie_time}</td>
-                  <td className='text-center'>{data.movie_date}</td>
-                  <td className='text-center'>{data.movie_amount}</td>
-                  <td className='text-center'>
-                    <button
-                      className="btn btn-primary"
-                      onClick={(e) => MovieAddEdit(data.id)}
-                    >
-                      EDIT
-                    </button>
-                  </td>
-                  <td className='text-center'>
-                    <button
-                      className="btn btn-danger"
-                      onClick={(e) => handleDelete(data.id)}
-                    >
-                      Delete
-                    </button>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </div>
+      <AdminMenuBar />
 
-      <div className='m-5 p-4' >
-        {selectedComponent && (
-          <Modal show={true} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-            <Modal.Header closeButton>
-              <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-              {selectedComponent}
-            </Modal.Body>
-            <Modal.Footer>
-              <Button variant='secondary' onClick={handleClose}>
-                Close
-              </Button>
-            </Modal.Footer>
-          </Modal>
-        )}
+      <div className='d-flex'>
+        <div>
+          <SideBar />
+        </div>
+        <div className='p-5'>
+          <Container className="text-center">
+            <Row>
+              <Col className='p-3'>
+                <Button variant="primary" onClick={addMovie}>Add Movie</Button>
+              </Col>
+            </Row>
+          </Container>
+          <div className="d-flex justify-content-center align-items-center">
+            <div className="bg-white rounded">
+              <table className='table'>
+                <thead>
+                  <tr>
+                    <th className='bg-black text-white' >movie_name</th>
+                    <th className='bg-black text-white'>movie_actor</th>
+                    <th className='bg-black text-white'>movie_time</th>
+                    <th className='bg-black text-white'>movie_date</th>
+                    <th className='bg-black text-white'>movie_amount</th>
+                    <th className='bg-black text-white'></th>
+                    <th className='bg-black text-white'></th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {movies.map((data, i) => (
+                    <tr key={i}>
+                      <td>{data.movie_name}</td>
+                      <td className='text-center'>{data.movie_actor}</td>
+                      <td className='text-center'>{data.movie_time}</td>
+                      <td className='text-center'>{data.movie_date}</td>
+                      <td className='text-center'>{data.movie_amount}</td>
+                      <td className='text-center'>
+                        <button
+                          className="btn btn-primary"
+                          onClick={(e) => MovieAddEdit(data.id)}
+                        >
+                          EDIT
+                        </button>
+                      </td>
+                      <td className='text-center'>
+                        <button
+                          className="btn btn-danger"
+                          onClick={(e) => handleDelete(data.id)}
+                        >
+                          Delete
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div className='m-5 p-4' >
+            {selectedComponent && (
+              <Modal show={true} onHide={handleClose} size="lg" aria-labelledby="contained-modal-title-vcenter" centered style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
+                <Modal.Header closeButton>
+                  <Modal.Title id="contained-modal-title-vcenter"></Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                  {selectedComponent}
+                </Modal.Body>
+                <Modal.Footer>
+                  <Button variant='secondary' onClick={handleClose}>
+                    Close
+                  </Button>
+                </Modal.Footer>
+              </Modal>
+            )}
+          </div>
+        </div>
       </div>
 
     </div>

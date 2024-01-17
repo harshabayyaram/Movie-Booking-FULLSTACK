@@ -47,8 +47,9 @@ const verifyUser = (req, res, next) => {
 };
 
 app.get("/", verifyUser, (req, res) => {
+  console.log(req.cookies);
   if (req.session.role) {
-    return res.json({ valid: true, role: req.session.role })
+    return res.json({ valid: true, role: req.session.role, token: req.cookies.token})
   } else {
     return res.json({ valid: false })
   }
