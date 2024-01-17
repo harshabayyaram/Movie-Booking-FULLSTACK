@@ -58,12 +58,11 @@ const Managemovies = () => {
   return (
     <div>
       <AdminMenuBar />
-
-      <div className='d-flex'>
-        <div>
+      <div className='d-flex col-log-12'>
+        <div className='col-lg-3'>
           <SideBar />
         </div>
-        <div className='p-5'>
+        <div className='col-lg-9'>
           <Container className="text-center">
             <Row>
               <Col className='p-3'>

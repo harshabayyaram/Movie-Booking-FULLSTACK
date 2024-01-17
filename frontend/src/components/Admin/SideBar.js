@@ -8,8 +8,6 @@ import {
     CDBSidebarMenuItem,
 } from 'cdbreact';
 import { NavLink } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFilm } from '@fortawesome/free-solid-svg-icons';
 
 const Sidebar = () => {
     return (
@@ -28,8 +26,11 @@ const Sidebar = () => {
                         <NavLink exact to="/admin/manage_movies" activeClassName="activeClicked">
                             <CDBSidebarMenuItem icon="table">Movies</CDBSidebarMenuItem>
                         </NavLink>
-                        <NavLink exact to="/" activeClassName="activeClicked">
-                            <CDBSidebarMenuItem icon="user">Profile page</CDBSidebarMenuItem>
+                        <NavLink exact to="/admin/manage_users" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Users</CDBSidebarMenuItem>
+                        </NavLink>
+                        <NavLink exact to="/admin/booking_details" activeClassName="activeClicked">
+                            <CDBSidebarMenuItem icon="user">Bookings</CDBSidebarMenuItem>
                         </NavLink>
                         
                     </CDBSidebarMenu>
@@ -41,7 +42,7 @@ const Sidebar = () => {
                             padding: '20px 5px',
                         }}
                     >
-                        Sidebar Footer
+                        Movie Booking App
                     </div>
                 </CDBSidebarFooter>
             </CDBSidebar>
