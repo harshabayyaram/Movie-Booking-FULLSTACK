@@ -7,6 +7,7 @@ function Admin() {
     <div>
       <Menubar />
       <SideBar/>
+      
     </div>
   )
 }
