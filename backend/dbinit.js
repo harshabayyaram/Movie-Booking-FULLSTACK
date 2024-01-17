@@ -9,7 +9,7 @@ function initializeDatabase() {
       password varchar(500) DEFAULT NULL,
       role varchar(45) DEFAULT NULL,
       PRIMARY KEY (id)
-    ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
   `;
 
   const moviesTableQuery = `
@@ -50,11 +50,11 @@ function initializeDatabase() {
   const usersInsertQuery = `
     INSERT IGNORE INTO users (name, email, password, role)
     VALUES 
+    ('Harsha', 'bayyaramharsha@gmail.com', 'bayyaramharsha@gmail.com', 'admin'),
+    ('Admin', 'admin@gmail.com', 'admin@gmail.com', 'admin'),
     ('Ramu', 'Ramu@gmail.com', 'Ramu@gmail.com', 'user'),
     ('Ragu', 'Ragu@gmail.com', 'Ragu@gmail.com', 'user'),
     ('Manjula', 'Manjula@gmail.com', 'Manjula@gmail.com', 'user'),
-    ('Harsha', 'bayyaramharsha@gmail.com', 'bayyaramharsha@gmail.com', 'admin'),
-    ('Admin', 'admin@gmail.com', 'admin@gmail.com', 'admin'),
     ('Kaveri', 'kaveri2092k@gmail.com', 'kaveri2092k@gmail.com', 'user'),
     ('Alice', 'alice@example.com', 'alice@example.com', 'user'),
     ('Bob', 'bob@example.com', 'bob@example.com', 'user'),
@@ -120,7 +120,7 @@ function initializeDatabase() {
       userId INT NULL,
       movieid INT NULL,
       PRIMARY KEY (id)
-    ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+    ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
   `;
 
   // mapping table execution

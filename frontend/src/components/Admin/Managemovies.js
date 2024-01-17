@@ -34,7 +34,6 @@ const Managemovies = () => {
   const handleDelete = async (id) => {
     try {
       await axios.delete(`http://localhost:8080/admin/movies/${id}`);
-      window.location.reload();
       setMovies(movies.filter(user => user.id !== id)); // Update the state to remove the deleted user without reloading the page
     } catch (error) {
       console.error('Error deleting movies:', error);

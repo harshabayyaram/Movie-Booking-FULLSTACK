@@ -18,7 +18,6 @@ const UserList = () => {
     const handleDelete = async (id) => {
         try {
             await axios.delete(`http://localhost:8080/admin/users/${id}`);
-            window.location.reload();
             setUsers(users.filter(user => user.id !== id)); // Update the state to remove the deleted user without reloading the page
         } catch (error) {
             console.error('Error deleting user:', error);
@@ -37,7 +36,6 @@ const UserList = () => {
                                 <th className='bg-black text-white' >Name</th>
                                 <th className='bg-black text-white d-flex justify-content-center text-align-center'>email</th>
                                 <th className='bg-black text-white'></th>
-                                <th className='bg-black text-white'></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -46,11 +44,6 @@ const UserList = () => {
                                     <td>{data.id}</td>
                                     <td>{data.name}</td>
                                     <td>{data.email}</td>
-                                    {/* <td>
-                                        <Link to={`update/${data.id}`} className="btn btn-primary">
-                                            Update
-                                        </Link>
-                                    </td> */}
                                     <td>
                                         <button
                                             className="btn btn-danger"
