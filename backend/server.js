@@ -47,9 +47,9 @@ const verifyUser = (req, res, next) => {
 };
 
 app.get("/", verifyUser, (req, res) => {
-  console.log(req.cookies);
+  // console.log(req.cookies);
   if (req.session.role) {
-    return res.json({ valid: true, role: req.session.role, token: req.cookies.token})
+    return res.json({ valid: true, role: req.session.role, token: req.cookies.token })
   } else {
     return res.json({ valid: false })
   }
@@ -130,6 +130,20 @@ app.get('/admin/movies', (req, res) => {
       return;
     }
     res.json(results);
+  });
+});
+
+app.get('/user/selectMovie/:id', (req, res) => {
+  const movieId = req.params.id;
+  console.log("select movie id",req.params.id);
+  db.query('SELECT * FROM movies WHERE id = ?', movieId, (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      console.log(error, "getting error while selecting one movie backend");
+      return;
+    }
+    res.json(results);
+    console.log(results, "NO error whiileselecting one movie");
   });
 });
 
