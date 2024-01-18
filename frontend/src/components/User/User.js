@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react'
-import MenuBar from './UserMenuBar';
+import UserMenuBar from './UserMenuBar';
 import MoviesList from './MoviesList';
 import axios from 'axios';
+import MainCarousel from './MainCarousel';
 
 
 function User() {
@@ -22,12 +23,17 @@ function User() {
   console.log(users);
   return (
     <div>
-      <MenuBar props={users} />
+      <UserMenuBar props={users} />
+      {/* 
       {users.length > 0 && (
-        <h3>Welcome {users[0].name}</h3>
-      )}
-
-      <MoviesList />
+        <h3 className=' d-flex align-items-center'>Welcome {users[0].name}</h3>
+      )} */}
+      <div style={{ backgroundColor: '#f2f2f2' }}>
+        <MainCarousel />
+      </div>
+      <div className='pt-4'>
+        <MoviesList />
+      </div>
 
     </div>
   )

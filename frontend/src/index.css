@@ -1,0 +1,11 @@
+body {
+  overflow-y: scroll;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}

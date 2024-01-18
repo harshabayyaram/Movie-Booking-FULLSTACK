@@ -46,6 +46,7 @@ const MoviesList = () => {
 
     return (
         <div className="container">
+            <h3 className='fst-italic'>Recommended Movies</h3>
             <div className="row">
                 {movies.map(movie => (
                     <div key={movie.id} className="col-md-3 mb-4">

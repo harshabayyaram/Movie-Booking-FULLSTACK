@@ -30,6 +30,7 @@ function Login() {
         if (res.data.valid) {
           Navigate("/");
           localStorage.setItem("token",res.data.token);
+          localStorage.setItem("role",res.data.role);
           // console.log(res.data.token);
         }
         else {
