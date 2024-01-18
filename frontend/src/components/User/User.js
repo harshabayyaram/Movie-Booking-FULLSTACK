@@ -24,10 +24,6 @@ function User() {
   return (
     <div>
       <UserMenuBar props={users} />
-      {/* 
-      {users.length > 0 && (
-        <h3 className=' d-flex align-items-center'>Welcome {users[0].name}</h3>
-      )} */}
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <MainCarousel />
       </div>

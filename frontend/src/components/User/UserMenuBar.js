@@ -5,7 +5,9 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import SearchPage from './Search';
 
 
-function UserMenuBar() {
+function UserMenuBar(props) {
+    const user = props;
+    console.log(user); // gives logged in user details
     const handleLogout = () => {
         Axios.get("http://localhost:8080/logout")
             .then(res => {
@@ -24,9 +26,13 @@ function UserMenuBar() {
                     <div>
                         <Navbar.Brand href="/">Cinema Booking</Navbar.Brand>
                     </div>
-                    <div>
-                        <SearchPage/>
-                    </div>
+                    <input
+                        className="form-control mr-sm-2"
+                        type="text"
+                        placeholder="Search for a Movies,events,Sports,Plays and Activities"
+                        aria-label="Search"
+                    />
+
                     <div className='d-flex'>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
