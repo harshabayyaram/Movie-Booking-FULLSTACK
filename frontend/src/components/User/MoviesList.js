@@ -5,8 +5,6 @@ import { Card, Row, Col } from 'react-bootstrap';
 const MoviesList = () => {
     const [loggedInUserId, setLoggedInUserId] = useState(null);
     const [movies, setMovies] = useState([]); // Define movies state
-    const [users, setUsers] = useState([]);
-    console.log(users);
 
     useEffect(() => {
         const userIdFromLocalStorage = localStorage.getItem('userId');
@@ -24,13 +22,7 @@ const MoviesList = () => {
                 console.error('Error fetching movies:', error);
             });
 
-        axios.get('http://localhost:8080/admin/users')
-            .then(response => {
-                setUsers(response.data);
-            })
-            .catch(error => {
-                console.error('Error fetching users:', error);
-            });
+
 
     }, []);
 

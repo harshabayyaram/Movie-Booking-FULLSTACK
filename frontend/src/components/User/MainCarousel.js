@@ -2,7 +2,7 @@ import Carousel from 'react-bootstrap/Carousel';
 
 function MainCarousel() {
     return (
-        <Carousel className='#f2f2f2'>
+        <Carousel className=''>
             <Carousel.Item>
                 <img
                     className="w-100"

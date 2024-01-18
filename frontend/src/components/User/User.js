@@ -24,11 +24,13 @@ function User() {
   return (
     <div>
       <UserMenuBar props={users} />
+
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <MainCarousel />
       </div>
+
       <div className='pt-4'>
-        <MoviesList />
+        <MoviesList props={users}/>
       </div>
 
     </div>
