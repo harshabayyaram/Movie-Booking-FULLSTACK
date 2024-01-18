@@ -280,5 +280,3 @@ db.query("select 1", (err, res) => {
     });
   }
 });
-
-
