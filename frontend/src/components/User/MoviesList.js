@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Row, Col } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 const MoviesList = () => {
     const [loggedInUserId, setLoggedInUserId] = useState(null);
@@ -21,20 +22,8 @@ const MoviesList = () => {
             .catch(error => {
                 console.error('Error fetching movies:', error);
             });
-
-
-
     }, []);
 
-    const handleBookTicket = (movieid) => {
-        const values = [loggedInUserId, movieid];
-        axios.post("http://localhost:8080/book-ticket", values)
-            .then(res => {
-                console.log("posted from frontend");
-                alert("Movie ticket Booked");
-            })
-            .catch(err => { console.log(err) })
-    }
 
     return (
         <div className="container">
@@ -44,31 +33,20 @@ const MoviesList = () => {
                     <div key={movie.id} className="col-md-3 mb-4">
                         <Row>
                             <Col>
-                                <Card style={{ width: '15rem' }}>
-                                    <Card.Img variant="top" src={movie.image_url} style={{ height: '15rem' }} />
-                                    <Card.Body>
-                                        <Card.Title>{movie.movie_name}</Card.Title>
-                                        <Card.Text>
-                                            Actor: {movie.movie_actor}
-                                            <br />
-                                            Time: {movie.movie_time}
-                                            <br />
-                                            Date: {movie.movie_date}
-                                            <br />
-                                            Amount: {movie.movie_amount}
-                                            <br />
-                                        </Card.Text>
-                                        <button className="btn btn-primary" onClick={() => handleBookTicket(movie.id)}>
-                                            Book Ticket
-                                        </button>
-                                    </Card.Body>
-                                </Card>
+                                <Link to={`/user/movies/${movie.id}`} className='text-decoration-none'>
+                                    <Card style={{ width: '15rem' }}>
+                                        <Card.Img variant="top" src={movie.image_url} style={{ height: '23rem' }} />
+                                        <Card.Body>
+                                            <Card.Title className='text-center font-weight-bold'>{movie.movie_name}</Card.Title>
+                                        </Card.Body>
+                                    </Card>
+                                </Link>
                             </Col>
                         </Row>
                     </div>
                 ))}
             </div>
-        </div>
+        </div >
 
     );
 };

@@ -2,7 +2,6 @@ import Axios from 'axios';
 import React from 'react';
 import { NavDropdown } from 'react-bootstrap';
 import { Navbar, Container, Nav } from 'react-bootstrap';
-import SearchPage from './Search';
 
 
 function UserMenuBar(props) {
@@ -59,17 +58,17 @@ function UserMenuBar(props) {
                     <div>
                         <Nav className="">
                             <Nav.Link href="/">Movies</Nav.Link>
-                            <Nav.Link href="/">Streams</Nav.Link>
-                            <Nav.Link href="/">Events</Nav.Link>
-                            <Nav.Link href="/">Sports</Nav.Link>
-                            <Nav.Link href="/">Activities</Nav.Link>
+                            <Nav.Link href="/user/streams">Streams</Nav.Link>
+                            <Nav.Link href="/user/events">Events</Nav.Link>
+                            <Nav.Link href="/user/sports">Sports</Nav.Link>
+                            <Nav.Link href="/user/activities">Activities</Nav.Link>
                         </Nav>
                     </div>
                     <div className='d-flex'>
                         <Nav className="">
-                            <Nav.Link href="/">Gift cards</Nav.Link>
-                            <Nav.Link href="/">Offers</Nav.Link>
-                            <Nav.Link href="/">ListYourShow</Nav.Link>
+                            <Nav.Link href="/user/gift-cards">Gift cards</Nav.Link>
+                            <Nav.Link href="/user/offers">Offers</Nav.Link>
+                            <Nav.Link href="/user/list-your-show">ListYourShow</Nav.Link>
                         </Nav>
                     </div>
                 </Container>

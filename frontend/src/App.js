@@ -9,6 +9,14 @@ import Contact from "./components/User/Contact";
 import About from "./components/User/About";
 import UserBookingList from "./components/User/UserBookingList";
 import { AdminPrivateRoutes, UserPrivateRoutes } from "./components/Authentication/ProtectedRoutes";
+import MovieFullPage from "./components/User/MovieFullPage";
+import Sports from "./components/User/Sports";
+import Activities from "./components/User/Activities";
+import Events from "./components/User/Events";
+import Streams from "./components/User/Streams";
+import GiftCards from "./components/User/GiftCards";
+import Offers from "./components/User/Offers";
+import ListYourShow from "./components/User/ListYourShow";
 
 function App() {
   return (
@@ -37,6 +45,30 @@ function App() {
         </Route>
         <Route path="/user/bookings" element={<UserPrivateRoutes />}>
           <Route path="/user/bookings" Component={UserBookingList}></Route>
+        </Route>
+        <Route path="/user/movies/:id" element={<UserPrivateRoutes />}>
+          <Route path="/user/movies/:id" Component={MovieFullPage}></Route>
+        </Route>
+        <Route path="/user/sports" element={<UserPrivateRoutes />}>
+          <Route path="/user/sports" Component={Sports}></Route>
+        </Route>
+        <Route path="/user/activities" element={<UserPrivateRoutes />}>
+          <Route path="/user/activities" Component={Activities}></Route>
+        </Route>
+        <Route path="/user/events" element={<UserPrivateRoutes />}>
+          <Route path="/user/events" Component={Events}></Route>
+        </Route>
+        <Route path="/user/streams" element={<UserPrivateRoutes />}>
+          <Route path="/user/streams" Component={Streams}></Route>
+        </Route>
+        <Route path="/user/gift-cards" element={<UserPrivateRoutes />}>
+          <Route path="/user/gift-cards" Component={GiftCards}></Route>
+        </Route>
+        <Route path="/user/offers" element={<UserPrivateRoutes />}>
+          <Route path="/user/offers" Component={Offers}></Route>
+        </Route>
+        <Route path="/user/list-your-show" element={<UserPrivateRoutes />}>
+          <Route path="/user/list-your-show" Component={ListYourShow}></Route>
         </Route>
 
       </Routes>

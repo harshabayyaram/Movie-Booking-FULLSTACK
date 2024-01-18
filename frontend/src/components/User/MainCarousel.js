@@ -14,7 +14,7 @@ function MainCarousel() {
             <Carousel.Item>
                 <img
                     className="w-100"
-                    src="https://assets-in.bmscdn.com/promotions/cms/creatives/1703746841318_satindersartajweb.jpg"
+                    src="https://assets-in.bmscdn.com/promotions/cms/creatives/1705299541982_vitrossdesktop.jpg"
                     alt="Second slide"
                     style={{ borderRadius: "15px" }}
                 />
@@ -22,7 +22,7 @@ function MainCarousel() {
             <Carousel.Item>
                 <img
                     className="w-100"
-                    src="https://assets-in.bmscdn.com/promotions/cms/creatives/1703662030488_hccweb.jpg"
+                    src="https://assets-in.bmscdn.com/promotions/cms/creatives/1704879476287_vitrossdesk.jpg"
                     alt="Third slide"
                     style={{ borderRadius: "15px" }}
                 />
