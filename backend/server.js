@@ -135,7 +135,7 @@ app.get('/admin/movies', (req, res) => {
 
 app.get('/user/selectMovie/:id', (req, res) => {
   const movieId = req.params.id;
-  console.log("select movie id",req.params.id);
+  console.log("select movie id", req.params.id);
   db.query('SELECT * FROM movies WHERE id = ?', movieId, (error, results) => {
     if (error) {
       res.status(500).json({ error: error.message });
@@ -280,6 +280,29 @@ app.put("/editmovie/:id", (req, res) => {
       console.log("Data edited in movies table from backend");
       return res.json(data);
     }
+  });
+});
+
+
+
+app.get('/events', (req, res) => {
+  db.query('SELECT * FROM events', (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json(results);
+  });
+});
+
+
+app.get('/sports', (req, res) => {
+  db.query('SELECT * FROM sports', (error, results) => {
+    if (error) {
+      res.status(500).json({ error: error.message });
+      return;
+    }
+    res.json(results);
   });
 });
 

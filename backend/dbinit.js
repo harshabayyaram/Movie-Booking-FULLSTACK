@@ -30,7 +30,7 @@ function initializeDatabase() {
   const moviesInsertQuery = `
     INSERT IGNORE INTO movies (movie_name, movie_actor, movie_time, movie_date, movie_status, movie_amount, image_url)
     VALUES 
-    ('salaar', 'prabhas', '10:30', '2024-01-03', 'block buster', '100', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQs0lsPPE6Bz2_YrhtcpniobzbXmNoxplVP1wKR_nEBCugHzfdV'),
+    ('Salaar', 'Prabhas', '10:30', '2024-01-03', 'block buster', '100', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQs0lsPPE6Bz2_YrhtcpniobzbXmNoxplVP1wKR_nEBCugHzfdV'),
     ('Devil', 'Kalyan Ram', '10:50', '2024-01-04', 'good', '200', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devil-the-british-secret-agent-et00312544-1703578193.jpg'),
     ('Dunki', 'Sharakuh khan', '12:00', '2024-01-05', 'blockbuster', '100', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/dunki-et00326964-1703064829.jpg'),
     ('Baahubali: The Beginning', 'Prabhas', '12:00', '2015-07-10', 'blockbuster', '95', 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTANLW6o_XKmdd3zyIgBRb0OyEeqwB54QWJ7ZgJteucuSIZSEZE'),
@@ -63,7 +63,6 @@ function initializeDatabase() {
   `;
 
   //working with users table creation and user table demo data insertion
-
   db.query(usersTableQuery, (err, results) => {
     if (err) throw err;
     console.log("Users table created.");
@@ -74,8 +73,6 @@ function initializeDatabase() {
 
       // If the users table has no data, perform the insert
       if (userRows.length === 0) {
-
-
         db.query(usersInsertQuery, (err, results) => {
           if (err) throw err;
           console.log("Users data inserted.");
@@ -112,7 +109,6 @@ function initializeDatabase() {
 
   });
 
-
   //mapping table query
   const userAndMoviesTableQuery = `
     CREATE TABLE IF NOT EXISTS userandmovies (
@@ -129,6 +125,110 @@ function initializeDatabase() {
     console.log("UserAndMovies table created.");
   });
 
+  //events table 
+  const eventTableQuery = `
+  CREATE TABLE IF NOT EXISTS events (
+    id int NOT NULL AUTO_INCREMENT,
+    event_title varchar(45) DEFAULT NULL,
+    event_date varchar(45) DEFAULT NULL,
+    event_time varchar(45) DEFAULT NULL,
+    event_place varchar(45) DEFAULT NULL,
+    event_imageurl varchar(255) DEFAULT NULL,
+    PRIMARY KEY (id)
+  ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+`;
+
+  const eventInsertQuery = `
+INSERT IGNORE INTO events (event_title, event_date, event_time, event_place, event_imageurl)
+VALUES 
+('Event1', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyMCBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00383640-tmpmudpskg-portrait.jpg"),
+('Event2', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-RnJpLCA5IEZlYiBvbndhcmRz,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00371920-ugwkrawdks-portrait.jpg"),
+('Event3', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyNyBKYW4gb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00371684-zhhpkftxhc-portrait.jpg"),
+('Event4', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyMCBKYW4gb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00383196-mvjcbbdeae-portrait.jpg"),
+('Event5', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAyOCBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00371565-drdlvufnzt-portrait.jpg"),
+('Event6', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-VHVlLCAyMyBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00377173-tunltvwueu-portrait.jpg"),
+('Event7', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/et00381486-leephycfhe-portrait.jpg"),
+('Event8', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAxNiBNYXI%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00373677-hrqpbwvwsu-portrait.jpg"),
+('Event9', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyMCBKYW4gb253YXJkcw%3D%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00352262-ylxhhfjvkx-portrait.jpg"),
+('Event10', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAxMCBGZWI%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00329412-dauveekmhx-portrait.jpg");
+`;
+
+  db.query(eventTableQuery, (err, results) => {
+    if (err) throw err;
+    console.log("Events table created.");
+    const checkEventsTableQuery = `SELECT * FROM events`;
+
+    db.query(checkEventsTableQuery, (err, userRows) => {
+      if (err) throw err;
+
+      // If the users table has no data, perform the insert
+      if (userRows.length === 0) {
+        db.query(eventInsertQuery, (err, results) => {
+          if (err) throw err;
+          console.log("Events data inserted.");
+        });
+      } else {
+        console.log("Events data already exists. Skipping insertion.");
+      }
+    });
+
+  });
+
+  //Sports table 
+  const sportsTableQuery = `
+ CREATE TABLE IF NOT EXISTS sports (
+   id int NOT NULL AUTO_INCREMENT,
+   sport_title varchar(45) DEFAULT NULL,
+   sport_date varchar(45) DEFAULT NULL,
+   sport_time varchar(45) DEFAULT NULL,
+   sport_place varchar(45) DEFAULT NULL,
+   sport_imageurl varchar(255) DEFAULT NULL,
+   PRIMARY KEY (id)
+ ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+`;
+
+  const sportsInsertQuery = `
+INSERT IGNORE INTO sports (sport_title, sport_date, sport_time, sport_place, sport_imageurl)
+VALUES 
+('Sport 1', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U2F0LCAyMCBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382028-wubrhmlqmn-portrait.jpg"),
+('Sport 2', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-U3VuLCAyMSBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382029-ycucrjukxj-portrait.jpg"),
+('Sport 3', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg"),
+('Sport 4', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg"),
+('Sport 5', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg"),
+('Sport 6', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg"),
+('Sport 7', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg"),
+('Sport 8', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg"),
+('Sport 9', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg"),
+('Sport 10', '12-01-2023', '21:00', 'Hyderabad', "https://assets-in.bmscdn.com/discovery-catalog/events/tr:w-400,h-600,bg-CCCCCC:w-400.0,h-660.0,cm-pad_resize,bg-000000,fo-top:l-text,ie-TW9uLCAyMiBKYW4%3D,fs-29,co-FFFFFF,ly-612,lx-24,pa-8_0_0_0,l-end/et00382030-xfvrwmeygs-portrait.jpg");
+`;
+
+  db.query(sportsTableQuery, (err, results) => {
+    if (err) throw err;
+    console.log("Events table created.");
+    const checkSportTableQuery = `SELECT * FROM sports`;
+
+    db.query(checkSportTableQuery, (err, userRows) => {
+      if (err) throw err;
+
+      // If the users table has no data, perform the insert
+      if (userRows.length === 0) {
+        db.query(sportsInsertQuery, (err, results) => {
+          if (err) throw err;
+          console.log("sports data inserted.");
+        });
+      } else {
+        console.log("Sports data already exists. Skipping insertion.");
+      }
+    });
+
+  });
+
+
 }
+
+
+
+
+
 
 module.exports = initializeDatabase;

@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import validation from "./SignUpValidation";
 import Axios from "axios";
+import image from "../../assets/HomePageBg.jpg"
 
 function Signup() {
   const [values, setValues] = useState({
@@ -37,10 +38,10 @@ function Signup() {
 
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-      <div className="bg-white p-3 rounded w-25">
+    <div className="d-flex justify-content-center align-items-center bg-primary vh-100" style={{ backgroundImage:`url(${image})`,backgroundSize:"contain" }}>
+      <div className="bg-white p-3 rounded w-50">
         <h2>Sign UP</h2>
-        <form action="" onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleSubmit} className="d-block">
           <div className="mb-3">
             <label htmlFor="name" className="p-2">
               Name
@@ -81,6 +82,7 @@ function Signup() {
             />
             {errors.password && <span className="text-danger">{errors.password}</span>}
           </div>
+
           <button type="submit" className="btn btn-success w-100">
             Sign Up
           </button>
@@ -92,7 +94,9 @@ function Signup() {
           >
             Log In
           </Link>
+
         </form>
+        <div className="d-flex justify-content-center pt-4 text-secondary">I agree to the -<a href="/terms-and-conditions"> terms and conditions</a> & <a href="/privacy-policy">Privacy</a></div>
       </div>
     </div>
   );

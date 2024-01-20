@@ -4,6 +4,8 @@ import validation from "./LoginValidations";
 import Axios from "axios";
 import axios from "axios";
 
+import image from "../../assets/HomePageBg.jpg"
+
 
 function Login() {
   const [values, setValues] = useState({
@@ -60,10 +62,10 @@ function Login() {
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100">
-      <div className="bg-white p-3 rounded w-25">
+    <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundImage:`url(${image})`,backgroundSize:"contain" }}>
+      <div className="bg-white p-3 rounded w-40">
         <h2>Sign In</h2>
-        <form action="" onSubmit={handleSubmit}>
+        <form action="" onSubmit={handleSubmit} className="d-block">
           <div className="mb-3">
             <label htmlFor="email" className="p-2">
               Email
@@ -96,6 +98,7 @@ function Login() {
           <Link to="/signup" className="btn btn-default border w-100 text-decoration-none">
             Create Account
           </Link>
+          <div className="d-flex justify-content-center pt-4 text-secondary">I agree to the -<a href="/terms-and-conditions"> terms and conditions</a> & <a href="/privacy-policy">Privacy</a></div>
         </form>
       </div>
     </div>

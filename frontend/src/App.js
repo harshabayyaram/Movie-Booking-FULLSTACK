@@ -17,14 +17,21 @@ import Streams from "./components/User/Streams";
 import GiftCards from "./components/User/GiftCards";
 import Offers from "./components/User/Offers";
 import ListYourShow from "./components/User/ListYourShow";
+import TermsAndConditions from "./components/Authentication/TermsAndConditions";
+import PrivacyPolicy from "./components/Authentication/PrivacyPolicy";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        {/* Public Routes  */}
         <Route path="/" element={<Home />}></Route>
         <Route path="/login" element={<Login />}></Route>
         <Route path="/signup" element={<Signup />}></Route>
+        <Route path="/terms-and-conditions" element={<TermsAndConditions />}></Route>
+        <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
+
+        {/* Admin Routes  */}
         <Route path="/admin/manage_movies" element={<AdminPrivateRoutes />}>
           <Route path="/admin/manage_movies" Component={Managemovies}></Route>
         </Route>

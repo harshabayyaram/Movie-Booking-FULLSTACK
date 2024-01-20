@@ -46,7 +46,7 @@ function MovieFullPage() {
             <div className='' style={{ borderRadius: "25px" }}>
                 {movie.length > 0 ? (
                     <div className='d-flex col-lg-12' style={{
-                        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.9) 80%, rgba(100, 100, 100, 0.7)), url(${movie[0].image_url})`,
+                        backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7) 80%, rgba(100, 100, 100, 0.7)), url(${movie[0].image_url})`,
                         backgroundSize: 'cover'
                     }}>
                         <div className='p-3 col-lg-3 m-5'>

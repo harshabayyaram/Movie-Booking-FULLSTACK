@@ -23,7 +23,7 @@ function User() {
   console.log(users);
   return (
     <div>
-      <UserMenuBar props={users} />
+      <UserMenuBar user={users} />
 
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <MainCarousel />

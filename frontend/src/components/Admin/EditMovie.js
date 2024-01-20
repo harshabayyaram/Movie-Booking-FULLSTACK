@@ -36,7 +36,7 @@ const EditMovie = ({ movie, handleClose }) => {
   return (
     <div className="d-flex justify-content-center align-item-center">
       <div className=" w-100 rounded">
-        <form>
+        <form className='d-block'>
           <h2 className='d-flex justify-content-center align-item-center'>ADD New Movie</h2>
           <div className="mb-2">
             <label>Movie Title</label>
