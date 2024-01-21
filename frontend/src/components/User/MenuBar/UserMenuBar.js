@@ -37,7 +37,7 @@ function UserMenuBar(props) {
     // console.log(searchSuggestions);
 
     const handleLogout = () => {
-        Axios.get("http://localhost:8080/logout")
+        Axios.get("http://localhost:8080/api/logout")
             .then(res => {
                 alert("thank you for using our service we don't store any information of yours")
                 window.location.reload();

@@ -23,7 +23,7 @@ function AddMovie() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/addMovie", values)
+      .post("http://localhost:8080/admin/addMovie", values)
       .then((res) => {
         console.log(res);
         alert("Movie uploaded")

@@ -26,7 +26,7 @@ function Login() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get("http://localhost:8080/")
+    axios.get("http://localhost:8080/api/")
       .then(res => {
         console.log(res);
         if (res.data.valid) {
@@ -46,7 +46,7 @@ function Login() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.email === "" && errors.password === "") {
-      Axios.post("http://localhost:8080/login", values)
+      Axios.post("http://localhost:8080/api/login", values)
         .then(res => {
           if (res.data.login) {
             //set id in local storage

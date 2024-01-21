@@ -26,7 +26,7 @@ const EditMovie = ({ movie, handleClose }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/editmovie/${movie.id}`, editedMovie)
+      await axios.put(`http://localhost:8080/admin/editmovie/${movie.id}`, editedMovie)
       handleClose();
     } catch (error) {
       console.error('Error editing movie in FE:', error);

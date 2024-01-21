@@ -10,7 +10,7 @@ function Home() {
   const [auth, setAuth] = useState(false);
 
   useEffect(() => {
-    axios.get("http://localhost:8080/")
+    axios.get("http://localhost:8080/api/")
       .then(res => {
         if (res.data.valid) {
           setRole(res.data.role);

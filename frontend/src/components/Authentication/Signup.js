@@ -27,7 +27,7 @@ function Signup() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.name === "" && errors.email === "" && errors.password === "") {
-      Axios.post("http://localhost:8080/signup", values)
+      Axios.post("http://localhost:8080/api/signup", values)
         .then(res => {
           navigate("/");
           console.log("posted from frontend");
@@ -38,7 +38,7 @@ function Signup() {
 
 
   return (
-    <div className="d-flex justify-content-center align-items-center bg-primary vh-100" style={{ backgroundImage:`url(${image})`,backgroundSize:"contain" }}>
+    <div className="d-flex justify-content-center align-items-center bg-primary vh-100" style={{ backgroundImage: `url(${image})`, backgroundSize: "contain" }}>
       <div className="bg-white p-3 rounded w-50">
         <h2>Sign UP</h2>
         <form action="" onSubmit={handleSubmit} className="d-block">
