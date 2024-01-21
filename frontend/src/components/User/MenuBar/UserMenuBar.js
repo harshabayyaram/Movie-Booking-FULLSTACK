@@ -6,7 +6,6 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./UserMenuBar.css";
 
-
 function UserMenuBar(props) {
     const [search, setSearch] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);

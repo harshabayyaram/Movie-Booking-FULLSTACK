@@ -1,5 +1,5 @@
 import React from 'react'
-import UserMenuBar from './UserMenuBar'
+import UserMenuBar from '../MenuBar/UserMenuBar'
 
 function Activities() {
     return (

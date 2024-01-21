@@ -1,5 +1,5 @@
 import React from 'react'
-import UserMenuBar from './UserMenuBar'
+import UserMenuBar from '../MenuBar/UserMenuBar'
 import './About.css'; // Import the CSS file for styling
 
 const About = () => {

@@ -1,6 +1,6 @@
 import React from 'react';
 import Menubar from "./AdminMenuBar";
-import SideBar from './SideBar';
+import SideBar from '../Side Bar/SideBar';
 import AdminMain from './AdminMain';
 
 function Admin() {
@@ -12,7 +12,7 @@ function Admin() {
           <SideBar />
         </div>
         <div col-lg-9>
-          <AdminMain/>
+          <AdminMain />
         </div>
       </div>
 

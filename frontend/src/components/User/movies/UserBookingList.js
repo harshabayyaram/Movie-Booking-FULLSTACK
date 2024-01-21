@@ -1,6 +1,6 @@
 import React from 'react';
 import BookingComponent from './BookingComponent';
-import UserMenuBar from './UserMenuBar';
+import UserMenuBar from '../MenuBar/UserMenuBar';
 
 function UserBookingList() {
   return (

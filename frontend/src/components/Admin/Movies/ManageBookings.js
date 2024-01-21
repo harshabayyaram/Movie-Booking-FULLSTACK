@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import Sidebar from './SideBar';
-import AdminMenuBar from './AdminMenuBar';
+import Sidebar from '../Side Bar/SideBar';
+import AdminMenuBar from '../Admin Home Page/AdminMenuBar';
 
 function ManageBookings() {
   const [bookings, setBookings] = useState([]);

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
-import UserMenuBar from './UserMenuBar';
-import MoviesList from './MoviesList';
+import UserMenuBar from '../MenuBar/UserMenuBar';
+import MoviesList from '../movies/MoviesList';
 import axios from 'axios';
 import MainCarousel from './MainCarousel';
 

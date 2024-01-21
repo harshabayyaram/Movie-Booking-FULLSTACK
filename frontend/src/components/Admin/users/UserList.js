@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Sidebar from './SideBar';
-import AdminMenuBar from './AdminMenuBar';
+import Sidebar from '../Side Bar/SideBar';
+import AdminMenuBar from '../Admin Home Page/AdminMenuBar';
 
 
 const UserList = () => {

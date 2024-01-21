@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import UserMenuBar from './UserMenuBar';
+import UserMenuBar from '../MenuBar/UserMenuBar';
 import MoviesList from './MoviesList';
 
 function MovieFullPage() {

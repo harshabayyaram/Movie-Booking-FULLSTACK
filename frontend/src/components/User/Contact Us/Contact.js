@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './Contact.css';
-import UserMenuBar from './UserMenuBar';
+import UserMenuBar from '../MenuBar/UserMenuBar';
 
 
 

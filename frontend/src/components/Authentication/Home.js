@@ -1,8 +1,8 @@
 import Axios from "axios";
 import axios from "axios";
 import React, { useEffect, useState } from 'react'
-import Admin from "../Admin/Admin";
-import User from "../User/User";
+import Admin from "../Admin/Admin Home Page/Admin";
+import User from "../User/User Home Page/User";
 import Login from "./Login";
 
 function Home() {

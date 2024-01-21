@@ -3,8 +3,8 @@ import axios from 'axios';
 import AddMovie from "./AddMovie"
 import EditMovie from "./EditMovie"
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
-import AdminMenuBar from './AdminMenuBar';
-import SideBar from './SideBar';
+import AdminMenuBar from '../Admin Home Page/AdminMenuBar';
+import SideBar from '../Side Bar/SideBar';
 
 
 const Managemovies = () => {

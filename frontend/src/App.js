@@ -2,21 +2,21 @@ import Login from "./components/Authentication/Login";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Signup from "./components/Authentication/Signup";
 import Home from "./components//Authentication/Home";
-import Managemovies from "./components/Admin/Managemovies";
-import ManageUsers from "../src/components/Admin/UserList"
-import ManageBookings from "./components/Admin/ManageBookings";
-import Contact from "./components/User/Contact";
-import About from "./components/User/About";
-import UserBookingList from "./components/User/UserBookingList";
+import Managemovies from "./components/Admin/Movies/Managemovies";
+import ManageUsers from "./components/Admin/users/UserList"
+import ManageBookings from "./components/Admin/Movies/ManageBookings";
+import Contact from "./components/User/Contact Us/Contact";
+import About from "./components/User/About/About";
+import UserBookingList from "./components/User/movies/UserBookingList";
 import { AdminPrivateRoutes, UserPrivateRoutes } from "./components/Authentication/ProtectedRoutes";
-import MovieFullPage from "./components/User/MovieFullPage";
-import Sports from "./components/User/Sports";
-import Activities from "./components/User/Activities";
-import Events from "./components/User/Events";
-import Streams from "./components/User/Streams";
-import GiftCards from "./components/User/GiftCards";
-import Offers from "./components/User/Offers";
-import ListYourShow from "./components/User/ListYourShow";
+import MovieFullPage from "./components/User/movies/MovieFullPage";
+import Sports from "./components/User/Sports/Sports";
+import Activities from "./components/User/Activities/Activities";
+import Events from "./components/User/Events/Events";
+import Streams from "./components/User/Streams/Streams";
+import GiftCards from "./components/User/Gift Cards/GiftCards";
+import Offers from "./components/User/Offers/Offers";
+import ListYourShow from "./components/User/List Your Show/ListYourShow";
 import TermsAndConditions from "./components/Authentication/TermsAndConditions";
 import PrivacyPolicy from "./components/Authentication/PrivacyPolicy";
 
@@ -43,7 +43,6 @@ function App() {
         </Route>
 
         {/* User Routes  */}
-
         <Route path="/user/about" element={<UserPrivateRoutes />}>
           <Route path="/user/about" Component={About}></Route>
         </Route>
