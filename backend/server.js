@@ -47,7 +47,7 @@ const verifyUser = (req, res, next) => {
 };
 
 app.get("/", verifyUser, (req, res) => {
-  // console.log(req.cookies);
+  //console.log(req.cookies);
   if (req.session.role) {
     return res.json({ valid: true, role: req.session.role, token: req.cookies.token })
   } else {
@@ -60,11 +60,11 @@ app.post("/signup", (req, res) => {
   const values = [req.body.name, req.body.email, req.body.password];
   db.query(sql, values, (err, data) => {
     if (err) {
-      console.log("Error in backend post", err);
+      //console.log("Error in backend post", err);
       return res.json("error");
     }
     else {
-      console.log("Data moved to data base from backend");
+      //console.log("Data moved to data base from backend");
       return res.json(data);
     }
   });
@@ -75,16 +75,16 @@ app.post("/login", (req, res) => {
   const values = [req.body.email, req.body.password];
   db.query(sql, values, (err, data) => {
     if (err) {
-      console.log("Error in backend post", err);
+      //console.log("Error in backend post", err);
       return res.json("error");
     }
     else {
       if (data.length > 0) {
         req.session.role = data[0].role;
-        // console.log(req.session.name);
+        //console.log(req.session.name);
         const name = data[0].name;
         const idid = data[0].id;
-        console.log(idid, "idd");//idddddddddddddd printing here
+        //console.log(idid, "idd");//idddddddddddddd printing here
         const token = jwt.sign({ name }, "jwt-secret-token", { expiresIn: '1d' });
         res.cookie('token', token);
         return res.json({ login: true, name: req.session.name, id: data[0].id });//sending to frontend
@@ -135,15 +135,15 @@ app.get('/admin/movies', (req, res) => {
 
 app.get('/user/selectMovie/:id', (req, res) => {
   const movieId = req.params.id;
-  console.log("select movie id", req.params.id);
+  //console.log("select movie id", req.params.id);
   db.query('SELECT * FROM movies WHERE id = ?', movieId, (error, results) => {
     if (error) {
       res.status(500).json({ error: error.message });
-      console.log(error, "getting error while selecting one movie backend");
+      //console.log(error, "getting error while selecting one movie backend");
       return;
     }
     res.json(results);
-    console.log(results, "NO error whiileselecting one movie");
+    //console.log(results, "NO error whiileselecting one movie");
   });
 });
 
@@ -172,15 +172,15 @@ app.get('/admin/users/:id', (req, res) => {
 
 app.post("/book-ticket", (req, res) => {
   const sql = "INSERT INTO userandmovies (userId, movieId) VALUES (?, ?)";
-  console.log("data got in book ticket " + req.body[0] + req.body[1]);
+  //console.log("data got in book ticket " + req.body[0] + req.body[1]);
   const values = [req.body[0], req.body[1]];
   db.query(sql, values, (err, data) => {
     if (err) {
-      console.log("Error book ticket sending from server", err);
+      //console.log("Error book ticket sending from server", err);
       return res.json("error");
     }
     else {
-      console.log("ticket data moved to the backed with userID and movieID");
+      //console.log("ticket data moved to the backed with userID and movieID");
       return res.json(data);
     }
   });
@@ -202,7 +202,7 @@ app.get('/admin/managebookings', (req, res) => {
 // Endpoint to fetch user bookings
 app.get('/api/userbookings/:id', (req, res) => {
   const userId = req.params.id;
-  console.log(req.params.id);
+  //console.log(req.params.id);
 
   const getUserBookingsQuery = `
     SELECT u.id AS userId, m.id AS movieId, m.movie_name AS movieName, m.movie_date AS date, m.movie_time AS time
@@ -224,7 +224,7 @@ app.get('/api/userbookings/:id', (req, res) => {
 // Endpoint to delete a booking
 app.delete('/api/deletebooking/:userId/:movieId', (req, res) => {
   const { userId, movieId } = req.params;
-  console.log(req.params, "dafad");
+  //console.log(req.params, "dafad");
 
   const deleteBookingQuery = `
     DELETE FROM userandmovies
@@ -253,11 +253,11 @@ app.post("/addMovie", (req, res) => {
   const values = [req.body.movietitle, req.body.movieactor, req.body.movietime, req.body.moviedate, , req.body.moviestatus, req.body.movieamount, req.body.imageurl];
   db.query(sql, values, (err, data) => {
     if (err) {
-      console.log("Error in backend adding movie", err);
+      //console.log("Error in backend adding movie", err);
       return res.json("error");
     }
     else {
-      console.log("Data moved to movies table from backend");
+      //console.log("Data moved to movies table from backend");
       return res.json(data);
     }
   });
@@ -267,17 +267,17 @@ app.post("/addMovie", (req, res) => {
 
 app.put("/editmovie/:id", (req, res) => {
   const id = req.params.id;
-  console.log(req.body)
+  //console.log(req.body)
   // const sql = `UPDATE movies SET movie_name = ?, movie_actor = ?, movie_time = ?, movie_date = ?, movie_status = ?, movie_amount = ?, image_url = ? WHERE id = ?`
   const sql = `UPDATE movies SET movie_name = ?, movie_actor = ?, movie_time = ?, movie_date = ?, movie_status = ?, movie_amount = ?, image_url = ? WHERE id = ?;`
   const values = [req.body.movietitle, req.body.movieactor, req.body.movietime, req.body.moviedate, req.body.moviestatus, req.body.movieamount, req.body.imageurl, id];
   db.query(sql, values, (err, data) => {
     if (err) {
-      console.log("Error in backend editing movie", err);
+      //console.log("Error in backend editing movie", err);
       return res.json("error");
     }
     else {
-      console.log("Data edited in movies table from backend");
+      //console.log("Data edited in movies table from backend");
       return res.json(data);
     }
   });
@@ -309,11 +309,11 @@ app.get('/sports', (req, res) => {
 
 db.query("select 1", (err, res) => {
   if (err) {
-    console.log(err);
+    //console.log(err);
   } else {
-    console.log("Connected to database");
+    //console.log("Connected to database");
     app.listen(8080, () => {
-      console.log("Server running at 8080");
+      //console.log("Server running at 8080");
     });
   }
 });
