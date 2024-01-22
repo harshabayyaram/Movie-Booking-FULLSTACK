@@ -8,7 +8,7 @@ const SportsList = () => {
 
     useEffect(() => {
         // Fetch events data
-        axios.get('http://localhost:8080/sports')
+        axios.get('http://localhost:8080/user/sports')
             .then(response => {
                 setSports(response.data); // Set fetched movies to state
             })

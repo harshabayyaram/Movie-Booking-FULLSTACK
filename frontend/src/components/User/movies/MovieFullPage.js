@@ -29,7 +29,7 @@ function MovieFullPage() {
 
     const handleBookTicket = () => {
         const values = [loggedInUserId, movieid];
-        axios.post("http://localhost:8080/book-ticket", values)
+        axios.post("http://localhost:8080/user/book-ticket", values)
             .then(res => {
                 console.log("posted from frontend");
                 alert("Movie ticket Booked");

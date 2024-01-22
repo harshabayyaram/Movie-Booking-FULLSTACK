@@ -11,7 +11,7 @@ function BookingComponent() {
 
     // Function to retrieve user bookings
     const getUserBookings = async () => {
-        await axios.get(`http://localhost:8080/api/userbookings/${userId}`)
+        await axios.get(`http://localhost:8080/user/userbookings/${userId}`)
             .then((response) => {
                 setBookings(response.data);
             })
@@ -21,7 +21,7 @@ function BookingComponent() {
     };
 
     const deleteBooking = (movieId) => {
-        axios.delete(`http://localhost:8080/api/deletebooking/${userId}/${movieId}`)
+        axios.delete(`http://localhost:8080/user/deletebooking/${userId}/${movieId}`)
             .then((response) => {
                 console.log(response.data.message);
                 getUserBookings();
