@@ -171,7 +171,6 @@ VALUES
         console.log("Events data already exists. Skipping insertion.");
       }
     });
-
   });
 
   //Sports table 

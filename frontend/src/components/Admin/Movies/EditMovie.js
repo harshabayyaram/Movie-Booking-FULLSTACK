@@ -5,12 +5,12 @@ import axios from 'axios';
 
 const EditMovie = ({ movie, handleClose }) => {
   const [editedMovie, setEditedMovie] = useState({
-    movie_name: movie.movie_name || '',
-    movie_actor: movie.movie_actor || '',
-    movie_time: movie.movie_time || '',
-    movie_date: movie.movie_date || '',
-    movie_amount: movie.movie_amount || '',
-    movie_status: movie.movie_status || '',
+    movie_name: movie.movie_name,
+    movie_actor: movie.movie_actor,
+    movie_time: movie.movie_time,
+    movie_date: movie.movie_date,
+    movie_amount: movie.movie_amount,
+    movie_status: movie.movie_status,
     image_url: movie.image_url,
   });
   console.log(editedMovie);
@@ -27,6 +27,7 @@ const EditMovie = ({ movie, handleClose }) => {
     event.preventDefault();
     try {
       await axios.put(`http://localhost:8080/admin/editmovie/${movie.id}`, editedMovie)
+        .then(window.location.reload())
       handleClose();
     } catch (error) {
       console.error('Error editing movie in FE:', error);
