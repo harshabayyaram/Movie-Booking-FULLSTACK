@@ -161,7 +161,7 @@ VALUES
     db.query(checkEventsTableQuery, (err, userRows) => {
       if (err) throw err;
 
-      // If the users table has no data, perform the insert
+      // If the events table has no data, perform the insert
       if (userRows.length === 0) {
         db.query(eventInsertQuery, (err, results) => {
           if (err) throw err;
@@ -210,7 +210,7 @@ VALUES
     db.query(checkSportTableQuery, (err, userRows) => {
       if (err) throw err;
 
-      // If the users table has no data, perform the insert
+      // If the sports table has no data, perform the insert
       if (userRows.length === 0) {
         db.query(sportsInsertQuery, (err, results) => {
           if (err) throw err;
@@ -220,15 +220,7 @@ VALUES
         console.log("Sports data already exists. Skipping insertion.");
       }
     });
-
   });
-
-
 }
-
-
-
-
-
 
 module.exports = initializeDatabase;
