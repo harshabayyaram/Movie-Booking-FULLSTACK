@@ -8,7 +8,6 @@ function MovieFullPage() {
 
     const [movie, setMovie] = useState([]);
     console.log(movie);
-
     const loggedInUserId = localStorage.getItem("userId");
     // console.log(loggedInUserId);
     const { id: movieid } = useParams();
@@ -26,7 +25,6 @@ function MovieFullPage() {
             });
     }, []);
 
-
     const handleBookTicket = () => {
         const values = [loggedInUserId, movieid];
         axios.post("http://localhost:8080/user/book-ticket", values)
@@ -36,6 +34,9 @@ function MovieFullPage() {
             })
             .catch(err => { console.log(err) })
     }
+
+
+
 
 
     return (
@@ -57,8 +58,9 @@ function MovieFullPage() {
                             <p style={{ fontSize: '1rem', color: 'white' }}>{movie[0].movie_actor}</p>
                             <p style={{ fontSize: '1rem', color: 'white' }}>{movie[0].movie_time}</p>
                             <p style={{ fontSize: '1rem', color: 'white' }}>{movie[0].movie_status}</p>
+                            <p style={{ fontSize: '1rem', color: 'white' }}>Rating : 8/10</p>
                             <div className='pt-5'>
-                                <button onClick={handleBookTicket} className='btn btn-primary' style={{ width: "10rem", height: "3rem" }}>Book Ticket</button>
+                                <button className='btn btn-primary' style={{ width: "10rem", height: "3rem" }} onClick={handleBookTicket}>Book Ticket</button>
                             </div>
                         </div>
                     </div>

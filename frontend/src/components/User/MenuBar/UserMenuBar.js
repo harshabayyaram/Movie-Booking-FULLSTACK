@@ -91,8 +91,6 @@ function UserMenuBar(props) {
                             </Nav>
                         </Navbar.Collapse>
 
-
-
                         <Nav className="ms-auto">
                             <Nav.Link ><button className='btn btn-danger' onClick={handleLogout}>Logout</button></Nav.Link>
                         </Nav>
@@ -109,11 +107,11 @@ function UserMenuBar(props) {
                             <Nav.Link href="/user/streams">Streams</Nav.Link>
                             <Nav.Link href="/user/events">Events</Nav.Link>
                             <Nav.Link href="/user/sports">Sports</Nav.Link>
-                            <Nav.Link href="/user/activities">Activities</Nav.Link>
+                            {/* <Nav.Link href="/user/activities">Activities</Nav.Link> */}
                         </Nav>
                     </div>
                     <div className='d-flex'>
-                        <Nav className="">
+                        <Nav >
                             <Nav.Link href="/user/gift-cards">Gift cards</Nav.Link>
                             <Nav.Link href="/user/offers">Offers</Nav.Link>
                             <Nav.Link href="/user/list-your-show">ListYourShow</Nav.Link>

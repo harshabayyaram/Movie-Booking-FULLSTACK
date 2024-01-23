@@ -19,6 +19,7 @@ import Offers from "./components/User/Offers/Offers";
 import ListYourShow from "./components/User/List Your Show/ListYourShow";
 import TermsAndConditions from "./components/Authentication/TermsAndConditions";
 import PrivacyPolicy from "./components/Authentication/PrivacyPolicy";
+import TheaterPage from "./components/User/movies/TheaterPage";
 
 function App() {
   return (
@@ -76,9 +77,10 @@ function App() {
         <Route path="/user/list-your-show" element={<UserPrivateRoutes />}>
           <Route path="/user/list-your-show" Component={ListYourShow}></Route>
         </Route>
-
+        <Route path="/user/movie/theater/:movieid" element={<UserPrivateRoutes />}>
+          <Route path="/user/movie/theater/:movieid" Component={TheaterPage}></Route>
+        </Route>
       </Routes>
-
     </BrowserRouter>
   );
 }
