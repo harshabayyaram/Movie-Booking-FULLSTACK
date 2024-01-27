@@ -37,7 +37,7 @@ function UserMenuBar(props) {
     // console.log(searchSuggestions);
 
     const handleLogout = () => {
-        Axios.get("http://localhost:8080/api/logout")
+        Axios.get("http://localhost:8080/logout")
             .then(res => {
                 alert("thank you for using our service we don't store any information of yours")
                 window.location.reload();
@@ -51,7 +51,7 @@ function UserMenuBar(props) {
             <Navbar bg="d-flex">
                 <Container className='d-flex justify-content-between'>
                     <div>
-                        <Navbar.Brand href="/">Cinema Booking</Navbar.Brand>
+                        <Navbar.Brand href="/">PVR Booking</Navbar.Brand>
                     </div>
                     <div className="w-100" style={{ position: 'relative' }}>
                         <input
@@ -97,7 +97,6 @@ function UserMenuBar(props) {
                     </div>
                 </Container>
             </Navbar>
-
 
             <Navbar bg="d-flex" style={{ backgroundColor: '#f2f2f2' }}>
                 <Container className='d-flex justify-content-between'>

@@ -1,7 +1,7 @@
 const db = require("../db/db");
 
 const users = (req, res) => {
-    db.query('SELECT * FROM users', (error, results) => {
+    db.query('SELECT id,name,email FROM users', (error, results) => {
         if (error) {
             res.status(500).json({ error: error.message });
             return;
@@ -54,10 +54,11 @@ const userId = (req, res) => {
 }
 
 const managebookings = (req, res) => {
-    const sql = 'SELECT u.name AS userName, m.movie_name, m.movie_date, m.movie_time, m.movie_amount FROM users u CROSS JOIN userandmovies um LEFT JOIN movies m ON m.id = um.movieid WHERE u.id = um.userId;'
+    const sql = 'SELECT u.name AS userName, m.movie_name, um.date, um.time, um.seatNumber, m.movie_amount FROM users u CROSS JOIN userandmovies um LEFT JOIN movies m ON m.id = um.movieid WHERE u.id = um.userId;'
     db.query(sql, (error, results) => {
         if (error) {
             res.status(500).json({ error: error.message });
+            // console.log(error);
             return;
         }
         res.json(results);
@@ -93,11 +94,12 @@ const editmovie = (req, res) => {
         }
         else {
             console.log("Data edited in movies table from backend");
-            console.log(data,"data in movie edit table");
+            console.log(data, "data in movie edit table");
             return res.json(data);
         }
     });
 }
+
 module.exports = {
     users,
     userIdDelete,

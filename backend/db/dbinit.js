@@ -30,6 +30,8 @@ function initializeDatabase() {
   const moviesInsertQuery = `
     INSERT IGNORE INTO movies (movie_name, movie_actor, movie_time, movie_date, movie_status, movie_amount, image_url)
     VALUES 
+    ('Guntur Karam', 'MAhesh babu', '12:00', '2022-01-14', 'blockbuster', '200', 'https://upload.wikimedia.org/wikipedia/en/3/3e/Guntur_Kaaram_film_poster.jpg'),
+    ('Hanuman', 'Teja sajja', '12:00', '2022-03-14', 'blockbuster', '200', 'https://upload.wikimedia.org/wikipedia/en/b/bb/Hanu_Man_film_Release_poster.jpeg'),
     ('Salaar', 'Prabhas', '10:30', '2024-01-03', 'block buster', '100', 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQs0lsPPE6Bz2_YrhtcpniobzbXmNoxplVP1wKR_nEBCugHzfdV'),
     ('Devil', 'Kalyan Ram', '10:50', '2024-01-04', 'good', '200', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/devil-the-british-secret-agent-et00312544-1703578193.jpg'),
     ('Dunki', 'Sharakuh khan', '12:00', '2024-01-05', 'blockbuster', '100', 'https://assets-in.bmscdn.com/iedb/movies/images/mobile/thumbnail/xlarge/dunki-et00326964-1703064829.jpg'),
@@ -109,12 +111,15 @@ function initializeDatabase() {
 
   });
 
-  //mapping table query
+  //mapping table query userId, movieId, date, time, seatNumber
   const userAndMoviesTableQuery = `
     CREATE TABLE IF NOT EXISTS userandmovies (
       id INT NOT NULL AUTO_INCREMENT,
       userId INT NULL,
-      movieid INT NULL,
+      movieid VARCHAR(50) NULL,
+      date VARCHAR(255) NULL,
+      time VARCHAR(50) NULL,
+      seatNumber VARCHAR(50) NULL,
       PRIMARY KEY (id)
     ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
   `;

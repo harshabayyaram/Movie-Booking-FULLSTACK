@@ -27,7 +27,7 @@ function Signup() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.name === "" && errors.email === "" && errors.password === "") {
-      Axios.post("http://localhost:8080/api/signup", values)
+      Axios.post("http://localhost:8080/signup", values)
         .then(res => {
           navigate("/");
           console.log("posted from frontend");

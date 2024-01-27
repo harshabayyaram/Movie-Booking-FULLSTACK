@@ -3,6 +3,7 @@ import UserMenuBar from '../MenuBar/UserMenuBar';
 import MoviesList from '../movies/MoviesList';
 import axios from 'axios';
 import MainCarousel from './MainCarousel';
+import Footer from '../Footer/Footer';
 
 
 function User() {
@@ -31,6 +32,10 @@ function User() {
 
       <div className='pt-4'>
         <MoviesList props={users}/>
+      </div>
+
+      <div>
+        <Footer/>
       </div>
 
     </div>

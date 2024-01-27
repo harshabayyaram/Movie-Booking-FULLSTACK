@@ -15,16 +15,22 @@ const selectMovie = (req, res) => {
 }
 
 const bookingTicket = (req, res) => {
-    const sql = "INSERT INTO userandmovies (userId, movieId) VALUES (?, ?)";
-    //console.log("data got in book ticket " + req.body[0] + req.body[1]);
-    const values = [req.body[0], req.body[1]];
+    const sql = "INSERT INTO userandmovies (userId, movieId, date, time, seatNumber) VALUES (?, ?, ?, ?, ?)";
+    // console.log(req.body);
+    const userId = req.body[0];
+    const movieId = req.body[1][0];
+    const date = req.body[2];
+    const time = req.body[3];
+    const seatNumber = req.body[4][0];
+
+    const values = [userId, movieId, date, time, seatNumber];
     db.query(sql, values, (err, data) => {
         if (err) {
-            //console.log("Error book ticket sending from server", err);
+            // console.log("Error book ticket sending from server", err);
             return res.json("error");
         }
         else {
-            //console.log("ticket data moved to the backed with userID and movieID");
+            // console.log("ticket data moved to the backed with userID and movieID");
             return res.json(data);
         }
     });

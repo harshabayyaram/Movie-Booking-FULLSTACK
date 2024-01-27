@@ -1,0 +1,7 @@
+.text-color{
+    color: rgba(255, 255, 255, 0.62);
+}
+
+.text-color:hover{
+    color: rgb(33, 33, 33);
+}

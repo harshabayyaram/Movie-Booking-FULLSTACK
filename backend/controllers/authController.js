@@ -31,7 +31,7 @@ const login = (req, res) => {
                 //console.log(req.session.name);
                 const name = data[0].name;
                 const idid = data[0].id;
-                //console.log(idid, "idd");//idddddddddddddd printing here
+                // console.log(idid, "idd");//idddddddddddddd printing here
                 const token = jwt.sign({ name }, "jwt-secret-token", { expiresIn: '1d' });
                 res.cookie('token', token);
                 return res.json({ login: true, name: req.session.name, id: data[0].id });//sending to frontend

@@ -3,9 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import validation from "./LoginValidations";
 import Axios from "axios";
 import axios from "axios";
-
-import image from "../../assets/HomePageBg.jpg"
-
+import image from "../../assets/HomePageBg.jpg";
 
 function Login() {
   const [values, setValues] = useState({
@@ -26,13 +24,13 @@ function Login() {
   Axios.defaults.withCredentials = true;
 
   useEffect(() => {
-    axios.get("http://localhost:8080/api/")
+    axios.get("http://localhost:8080/")
       .then(res => {
         console.log(res);
         if (res.data.valid) {
           Navigate("/");
-          localStorage.setItem("token",res.data.token);
-          localStorage.setItem("role",res.data.role);
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("role", res.data.role);
           // console.log(res.data.token);
         }
         else {
@@ -46,10 +44,9 @@ function Login() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.email === "" && errors.password === "") {
-      Axios.post("http://localhost:8080/api/login", values)
+      Axios.post("http://localhost:8080/login", values)
         .then(res => {
           if (res.data.login) {
-            //set id in local storage
             localStorage.setItem("userId", res.data.id);
             Navigate("/");
           } else {
@@ -62,7 +59,7 @@ function Login() {
   }
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundImage:`url(${image})`,backgroundSize:"contain" }}>
+    <div className="d-flex justify-content-center align-items-center vh-100" style={{ backgroundImage: `url(${image})`, backgroundSize: "contain" }}>
       <div className="bg-white p-3 rounded w-40">
         <h2>Sign In</h2>
         <form action="" onSubmit={handleSubmit} className="d-block">

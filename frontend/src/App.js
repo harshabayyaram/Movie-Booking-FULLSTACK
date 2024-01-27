@@ -19,7 +19,7 @@ import Offers from "./components/User/Offers/Offers";
 import ListYourShow from "./components/User/List Your Show/ListYourShow";
 import TermsAndConditions from "./components/Authentication/TermsAndConditions";
 import PrivacyPolicy from "./components/Authentication/PrivacyPolicy";
-import TheaterPage from "./components/User/movies/TheaterPage";
+import MovieSeatInfo from "./components/User/movies/MovieSeatInfo";
 
 function App() {
   return (
@@ -77,8 +77,8 @@ function App() {
         <Route path="/user/list-your-show" element={<UserPrivateRoutes />}>
           <Route path="/user/list-your-show" Component={ListYourShow}></Route>
         </Route>
-        <Route path="/user/movie/theater/:movieid" element={<UserPrivateRoutes />}>
-          <Route path="/user/movie/theater/:movieid" Component={TheaterPage}></Route>
+        <Route path="/user/movie-seat-info/:id" element={<MovieSeatInfo />}>
+          <Route path="/user/movie-seat-info/:id" Component={MovieSeatInfo}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

@@ -29,7 +29,7 @@ app.use(session({
   }
 }))
 
-app.use("/api", authRoutes);
+app.use("/", authRoutes);
 app.use("/admin", adminRoutes);
 app.use("/user", userRoutes);
 
