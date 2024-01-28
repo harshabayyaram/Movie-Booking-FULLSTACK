@@ -5,15 +5,12 @@ import { NavDropdown } from 'react-bootstrap';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./UserMenuBar.css";
-import DropDown from './DropDown';
 
 
-function UserMenuBar(props) {
+function UserMenuBar() {
     const [search, setSearch] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);
-    const { user } = props;
-    // console.log(props);
-    // console.log(user[0].name); // gives logged in user details
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleSearchChange = async (event) => {
         const searchTerm = event.target.value;
@@ -36,7 +33,6 @@ function UserMenuBar(props) {
             console.error('Error fetching movies:', error);
         }
     }
-    // console.log(searchSuggestions);
 
     const handleLogout = () => {
         Axios.get("http://localhost:8080/logout")
@@ -47,6 +43,12 @@ function UserMenuBar(props) {
             })
             .catch(err => console.log(err));
     }
+
+
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
         <>
@@ -85,19 +87,58 @@ function UserMenuBar(props) {
                             <Nav className="ml-auto">
                                 <Nav.Link href="/">Home</Nav.Link>
                                 <Nav.Link href="/user/about">About</Nav.Link>
-                                <NavDropdown title="Services" id="basic-nav-dropdown">
+                                {/* <NavDropdown title="Services" id="basic-nav-dropdown">
                                     <Nav.Link href="/user/bookings" >My Bookings</Nav.Link>
-                                    <Nav.Link href="/" >Profile {user && user[0] && user[0].name}</Nav.Link>
-                                </NavDropdown>
+                                    <Nav.Link href="/" >Profile</Nav.Link>
+                                </NavDropdown> */}
                                 <Nav.Link href="/user/contact">Contact</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
+                        <Nav className='ms-auto'>
+                            <div className='z-index-100 '>
+                                <div id="app ">
+                                    <div className="text position-relative">
+                                        <button className="btn btn-primary " onClick={toggleMenu}>
+                                            <small>Welcome</small>
+                                        </button>
 
-                        <Nav className="ms-auto">
-                            <Nav.Link ><button className='btn btn-danger' onClick={handleLogout}>Logout</button></Nav.Link>
-                        </Nav>
-                        <Nav className='position-relative'>
-                            <div className='position-absolute z-index-100'><DropDown /></div>
+                                        {isMenuOpen && (
+                                            <div className="card text-start position-absolute" style={{ top: '40px' }}>
+                                                <div className="card-body px-4 py-4">
+                                                    <div id="circle-avatar" className="text-center mx-auto mb-4">
+                                                        <span>K</span>
+                                                    </div>
+
+                                                    <h5 className="text-center mb-0">user_name</h5>
+                                                    <p className="text-center mb-2">user@gmail.com</p>
+
+                                                    <hr className="mb-0" style={{ margin: "0 -24px 0" }} />
+
+                                                    <div
+                                                        className="list-group list-group-flush"
+                                                        style={{ margin: "0 -24px 0" }}
+                                                    >
+                                                        <button className="list-group-item list-group-item-action px-4">
+                                                            <Link to="/user/bookings" className='text-decoration-none'>My Bookings</Link>
+                                                        </button>
+                                                        <button className="list-group-item list-group-item-action px-4">
+                                                            <Link to="/user/edit-profile" className='text-decoration-none'>My Profile</Link>
+                                                        </button>
+                                                    </div>
+
+                                                    <hr style={{ margin: "0 -24px 24px" }} />
+
+                                                    <div className="d-grid">
+                                                        <button className="btn btn-secondary" onClick={toggleMenu}>
+                                                            <small onClick={handleLogout}>Logout</small>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        )}
+                                    </div>
+                                </div>
+                            </div>
                         </Nav>
                     </div>
                 </Container>
@@ -111,7 +152,7 @@ function UserMenuBar(props) {
                             <Nav.Link href="/user/streams">Streams</Nav.Link>
                             <Nav.Link href="/user/events">Events</Nav.Link>
                             <Nav.Link href="/user/sports">Sports</Nav.Link>
-                            {/* <Nav.Link href="/user/activities">Activities</Nav.Link> */}
+                            <Nav.Link href="/user/activities">Activities</Nav.Link>
                         </Nav>
                     </div>
                     <div className='d-flex'>

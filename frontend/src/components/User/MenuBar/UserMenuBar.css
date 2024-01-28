@@ -6,7 +6,46 @@
   z-index: 100;
 }
 
-.z-index-100{
+.z-index-100 {
   z-index: 100;
 }
 
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.card {
+  display: inline-block;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  min-width: 200px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ccc;
+}
+
+.card-body {
+  text-align: center;
+}
+
+#circle-avatar {
+  width: 60px;
+  height: 60px;
+  background-color: #007bff;
+  color: #fff;
+  font-size: 24px;
+  line-height: 60px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+}
+
+.list-group-item {
+  text-align: center;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  color: #fff;
+}
