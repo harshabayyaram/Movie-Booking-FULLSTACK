@@ -5,6 +5,8 @@ import { NavDropdown } from 'react-bootstrap';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./UserMenuBar.css";
+import DropDown from './DropDown';
+
 
 function UserMenuBar(props) {
     const [search, setSearch] = useState('');
@@ -93,6 +95,9 @@ function UserMenuBar(props) {
 
                         <Nav className="ms-auto">
                             <Nav.Link ><button className='btn btn-danger' onClick={handleLogout}>Logout</button></Nav.Link>
+                        </Nav>
+                        <Nav className='position-relative'>
+                            <div className='position-absolute z-index-100'><DropDown /></div>
                         </Nav>
                     </div>
                 </Container>

@@ -23,8 +23,8 @@ const MoviesList = () => {
                 console.error('Error fetching movies:', error);
             });
     }, []);
-
-
+    console.log(movies);
+    
     return (
         <div className="container">
             <h3 className='fst-italic'>Recommended Movies</h3>
