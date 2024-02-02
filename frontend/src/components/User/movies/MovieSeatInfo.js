@@ -5,18 +5,13 @@ import { useParams } from 'react-router-dom';
 
 function MovieSeatInfo() {
     const loggedInUserId = localStorage.getItem("userId");
-    console.log(loggedInUserId);
     const { id: movieid } = useParams();
-    console.log(movieid);
     const [formData, setFormData] = useState({});
-    console.log(formData);
     const [movie, setMovie] = useState([]);
-    // console.log(movie);
     const [selectedDate, setSelectedDate] = useState('27-01-2024');
-    console.log(selectedDate);
     const [selectedTime, setSelectedTime] = useState('10:00 AM');
-    console.log(selectedTime);
 
+    console.log(movie);
 
 
     useEffect(() => {
@@ -71,11 +66,11 @@ function MovieSeatInfo() {
                         <label htmlFor="date">Movie date</label>
                         {/* <input type='date' id="date" name="date" placeholder='Select date' className='form-control' onChange={handleInput} /> */}
                         <select className='form-control' onChange={handleDate}>
-                            <option>27-01-2024</option>
-                            <option>28-01-2024</option>
-                            <option>29-01-2024</option>
-                            <option>30-01-2024</option>
-                            <option>31-01-2024</option>
+                            <option>15-02-2024</option>
+                            <option>16-02-2024</option>
+                            <option>17-02-2024</option>
+                            <option>18-02-2024</option>
+                            <option>19-02-2024</option>
                         </select>
                         <label htmlFor="time">Movie Time</label>
                         {/* <input type='time' id="time" name="time" placeholder='Select Movie Time' className='form-control' onChange={handleInput} /> */}
@@ -86,9 +81,10 @@ function MovieSeatInfo() {
                             <option>9:00 PM</option>
                         </select>
 
-                        <label htmlFor="seat_number">Seat Number</label>
-                        <input type='number' id="seatNumber" name="seatNumber" placeholder='Select Seat Number' className='form-control' onChange={handleInput} />
-                        <button type='submit'>Book Ticket</button>
+                        <label htmlFor="seat_number">Number of seats</label>
+                        <input type='number' id="seatNumber" name="seatNumber" placeholder='Select number of Seats' className='form-control' onChange={handleInput} />
+                        <p>Amount to be Paid : {movie.length > 0 ? ((movie[0].movie_amount) * formData.seatNumber):(<small>loading...</small>)} </p>
+                        <button type='submit'>Pay and Book Ticket</button>
                     </form>
                 </div>
             </div>

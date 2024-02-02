@@ -99,11 +99,32 @@ const sports = (req, res) => {
     });
 }
 
+
+const editUser = (req, res) => {
+    const id = req.params.id;
+    // console.log(id,"id got");
+    console.log(req.body,"bobobobobo")
+    const sql = `UPDATE users SET name = ?, email = ?, password = ?,role ='user' WHERE id = ?;`
+    const values = [req.body.name, req.body.email, req.body.password, id];
+    db.query(sql, values, (err, data) => {
+        if (err) {
+            // console.log("Error in backend editing user", err);
+            return res.json("error");
+        }
+        else {
+            // console.log("Data edited in users table from backend");
+            // console.log(data, "data in users edit table");
+            return res.json(data);
+        }
+    });
+}
+
 module.exports = {
     selectMovie,
     bookingTicket,
     userbookings,
     deletebooking,
     events,
-    sports
+    sports,
+    editUser
 }

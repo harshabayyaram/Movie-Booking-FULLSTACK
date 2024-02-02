@@ -35,8 +35,8 @@ function ManageBookings() {
                     <th className='bg-black text-white'>movie_name</th>
                     <th className='bg-black text-white d-flex justify-content-center text-align-center'>movie_date</th>
                     <th className='bg-black text-white'>movie_time</th>
-                    <th className='bg-black text-white'>Seat Number</th>
-                    <th className='bg-black text-white'>movie_amount</th>
+                    <th className='bg-black text-white'>Number of seats</th>
+                    <th className='bg-black text-white'>Total_amount</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -47,7 +47,7 @@ function ManageBookings() {
                       <td>{data.date}</td>
                       <td>{data.time}</td>
                       <td>{data.seatNumber}</td>
-                      <td>{data.movie_amount}</td>
+                      <td>{(data.movie_amount)*(data.seatNumber)}</td>
                     </tr>
                   ))}
                 </tbody>

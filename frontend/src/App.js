@@ -20,6 +20,7 @@ import ListYourShow from "./components/User/List Your Show/ListYourShow";
 import TermsAndConditions from "./components/Authentication/TermsAndConditions";
 import PrivacyPolicy from "./components/Authentication/PrivacyPolicy";
 import MovieSeatInfo from "./components/User/movies/MovieSeatInfo";
+import EditProfile from "./components/User/EditProfile/EditProfile";
 
 function App() {
   return (
@@ -77,8 +78,11 @@ function App() {
         <Route path="/user/list-your-show" element={<UserPrivateRoutes />}>
           <Route path="/user/list-your-show" Component={ListYourShow}></Route>
         </Route>
-        <Route path="/user/movie-seat-info/:id" element={<MovieSeatInfo />}>
+        <Route path="/user/movie-seat-info/:id" element={<UserPrivateRoutes />}>
           <Route path="/user/movie-seat-info/:id" Component={MovieSeatInfo}></Route>
+        </Route>
+        <Route path="/user/edit-profile" element={<UserPrivateRoutes />}>
+          <Route path="/user/edit-profile" Component={EditProfile}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

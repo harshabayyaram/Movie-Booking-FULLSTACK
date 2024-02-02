@@ -1,7 +1,6 @@
 import axios from 'axios';
 import Axios from 'axios';
-import React, { useState } from 'react';
-import { NavDropdown } from 'react-bootstrap';
+import React, { useEffect, useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./UserMenuBar.css";
@@ -11,6 +10,19 @@ function UserMenuBar() {
     const [search, setSearch] = useState('');
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [user, setUser] = useState([]);
+    const id = localStorage.getItem("userId");
+    useEffect(() => {
+        axios.get('http://localhost:8080/admin/users/' + id)
+            .then(response => {
+                setUser(response.data);
+                console.log(response.data);
+            })
+            .catch(error => {
+                console.error('Error fetching users:', error);
+            });
+    }, []);
+    console.log(user[0]);
 
     const handleSearchChange = async (event) => {
         const searchTerm = event.target.value;
@@ -43,8 +55,6 @@ function UserMenuBar() {
             })
             .catch(err => console.log(err));
     }
-
-
 
     const toggleMenu = () => {
         setIsMenuOpen(!isMenuOpen);
@@ -81,7 +91,6 @@ function UserMenuBar() {
                         )}
                     </div>
 
-
                     <div className='d-flex'>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
@@ -99,7 +108,11 @@ function UserMenuBar() {
                                 <div id="app ">
                                     <div className="text position-relative">
                                         <button className="btn btn-primary " onClick={toggleMenu}>
-                                            <small>Welcome</small>
+                                            {user.length > 0 ? (
+                                                <small>{user[0].name}</small>
+                                            ) : (
+                                                <small>Loading...</small>
+                                            )}
                                         </button>
 
                                         {isMenuOpen && (
@@ -109,8 +122,8 @@ function UserMenuBar() {
                                                         <span>K</span>
                                                     </div>
 
-                                                    <h5 className="text-center mb-0">user_name</h5>
-                                                    <p className="text-center mb-2">user@gmail.com</p>
+                                                    <h5 className="text-center mb-0">{user[0].name}</h5>
+                                                    <p className="text-center mb-2">{user[0].email}</p>
 
                                                     <hr className="mb-0" style={{ margin: "0 -24px 0" }} />
 
