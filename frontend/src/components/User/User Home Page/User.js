@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import UserMenuBar from '../MenuBar/UserMenuBar';
 import MoviesList from '../movies/MoviesList';
-import axios from 'axios';
 import MainCarousel from './MainCarousel';
 import Footer from '../Footer/Footer';
 
@@ -9,22 +8,22 @@ import Footer from '../Footer/Footer';
 function User() {
   return (
     <div>
-      <UserMenuBar/>
+      <UserMenuBar />
 
       <div style={{ backgroundColor: '#f2f2f2' }}>
         <MainCarousel />
       </div>
 
       <div className='pt-4'>
-        <MoviesList/>
+        <MoviesList />
       </div>
 
       <div>
-        <Footer/>
+        <Footer />
       </div>
 
     </div>
   )
 }
 
-export default User
+export default User;
