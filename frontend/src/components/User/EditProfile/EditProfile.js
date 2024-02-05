@@ -12,8 +12,9 @@ function EditProfile() {
     email: '',
     password: ''
   });
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
+    // eslint-disable-next-line
     axios.get("https://movie-booking-backend-node.onrender.com/admin/users/" + loggedUser)
       .then(response => {
         setUser(response.data);
@@ -28,7 +29,7 @@ function EditProfile() {
       .catch(error => {
         console.error("error fetching users");
       })
-  }, [])
+  }, [loggedUser])
 
   const handleInput = (event) => {
     const { name, value } = event.target;

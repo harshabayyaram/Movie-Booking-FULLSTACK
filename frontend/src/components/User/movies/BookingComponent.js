@@ -32,8 +32,14 @@ function BookingComponent() {
     };
 
     useEffect(() => {
-        getUserBookings();
-    }, []); // Fetch bookings on component mount
+        axios.get(`https://movie-booking-backend-node.onrender.com/user/userbookings/${userId}`)
+            .then((response) => {
+                setBookings(response.data);
+            })
+            .catch((error) => {
+                console.error('Error fetching bookings for single user:', error);
+            });
+    }, [userId]); // Fetch bookings on component mount
 
     return (
         <div>

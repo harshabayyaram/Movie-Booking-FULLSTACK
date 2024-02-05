@@ -21,7 +21,7 @@ function UserMenuBar() {
             .catch(error => {
                 console.error('Error fetching users:', error);
             });
-    }, []);
+    }, [id]);
     console.log(user[0]);
 
     const handleSearchChange = async (event) => {

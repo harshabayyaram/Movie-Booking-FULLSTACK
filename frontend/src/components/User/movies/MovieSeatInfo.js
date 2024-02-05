@@ -13,9 +13,10 @@ function MovieSeatInfo() {
 
     console.log(movie);
 
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         console.log(movieid);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
         const apiUrl = `https://movie-booking-backend-node.onrender.com/user/selectMovie/${movieid}`;
         axios.get(apiUrl)
             .then(response => {
@@ -24,7 +25,7 @@ function MovieSeatInfo() {
             .catch(error => {
                 console.error('Error Selecting Particular movie', error);
             });
-    }, []);
+    }, [movieid]);
 
     const handleInput = (event) => {
         setFormData(prev => ({
@@ -83,7 +84,7 @@ function MovieSeatInfo() {
 
                         <label htmlFor="seat_number">Number of seats</label>
                         <input type='number' id="seatNumber" name="seatNumber" placeholder='Select number of Seats' className='form-control' onChange={handleInput} />
-                        <p>Amount to be Paid : {movie.length > 0 ? ((movie[0].movie_amount) * formData.seatNumber):(<small>loading...</small>)} </p>
+                        <p>Amount to be Paid : {movie.length > 0 ? ((movie[0].movie_amount) * formData.seatNumber) : (<small>loading...</small>)} </p>
                         <button type='submit'>Pay and Book Ticket</button>
                     </form>
                 </div>

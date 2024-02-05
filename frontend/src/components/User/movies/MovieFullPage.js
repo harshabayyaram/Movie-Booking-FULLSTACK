@@ -8,7 +8,7 @@ function MovieFullPage() {
 
     const [movie, setMovie] = useState([]);
     console.log(movie);
-    const loggedInUserId = localStorage.getItem("userId");
+    // const loggedInUserId = localStorage.getItem("userId");
     // console.log(loggedInUserId);
     const { id: movieid } = useParams();
     // console.log(movieid);
@@ -23,7 +23,7 @@ function MovieFullPage() {
             .catch(error => {
                 console.error('Error Selecting Particular movie', error);
             });
-    }, []);
+    }, [movieid]);
 
     // const handleBookTicket = () => {
     //     const values = [loggedInUserId, movieid];
