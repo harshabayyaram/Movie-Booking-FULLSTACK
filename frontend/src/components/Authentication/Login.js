@@ -6,6 +6,7 @@ import axios from "axios";
 import image from "../../assets/HomePageBg.jpg";
 
 function Login() {
+  Axios.defaults.withCredentials = true;
   const [values, setValues] = useState({
     email: "",
     password: "",
@@ -21,7 +22,7 @@ function Login() {
 
   }
 
-  Axios.defaults.withCredentials = true;
+
 
   useEffect(() => {
     axios.get("http://localhost:8080/")

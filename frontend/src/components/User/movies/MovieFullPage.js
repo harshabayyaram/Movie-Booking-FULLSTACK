@@ -68,7 +68,7 @@ function MovieFullPage() {
                     <p>Loading...</p>
                 )}
             </div>
-
+{/* 
             <div className='container pt-4'>
                 <div className='m-3'>
                     <h3><b>About the Movie</b></h3>
@@ -91,7 +91,7 @@ function MovieFullPage() {
                     </div>
                 </div>
                 <hr />
-            </div>
+            </div> */}
         </div>
 
     )

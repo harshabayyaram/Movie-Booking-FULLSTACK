@@ -39,8 +39,8 @@ function MovieSeatInfo() {
         axios.post("http://localhost:8080/user/book-ticket", values)
             .then(res => {
                 console.log("posted from frontend");
-                alert("Movie ticket Booked");
             })
+            .then(alert("movie ticket booked"))
             .catch(err => { console.log(err) })
     }
 

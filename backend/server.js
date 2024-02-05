@@ -5,22 +5,29 @@ const db = require("./db/db");
 const session = require("express-session");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const initializeDatabase = require("./db/dbinit");
+// const initializeDatabase = require("./db/dbinit");
 const authRoutes = require("./routes/authRoutes");
-const adminRoutes = require("./routes/adminRoutes")
+const adminRoutes = require("./routes/adminRoutes");
 const userRoutes = require("./routes/userRoutes");
-initializeDatabase();
+
+require('dotenv').config();
+
+const port = process.env.PORT || 8080;
+
+// initializeDatabase();
 
 app.use(cors({
   origin: ["http://localhost:3000"],
   methods: ["POST", "PUT", "GET", "DELETE"],
   credentials: true
 }));
+
+
 app.use(express.json());
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(session({
-  secret: "secret",
+  secret: process.env.SESSION_SECRET || "secret",
   resave: false,
   saveUninitialized: false,
   cookie: {
@@ -35,11 +42,17 @@ app.use("/user", userRoutes);
 
 db.query("select 1", (err, res) => {
   if (err) {
-    //console.log(err);
+    console.log(err);
   } else {
-    //console.log("Connected to database");
-    app.listen(8080, () => {
-      //console.log("Server running at 8080");
+    console.log("Connected to database");
+    app.listen(port, () => {
+      console.log(`Server running at ${port} `);
     });
   }
 });
+
+
+app.use((err, req, res, next) => {
+  console.error(err.stack);
+  res.status(500).send('Something went wrong!');
+}); 
