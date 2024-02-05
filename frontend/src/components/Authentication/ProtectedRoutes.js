@@ -10,6 +10,7 @@ export const AdminPrivateRoutes = () => {
     return auth && role === "admin" ? <Outlet /> : <Navigate to="/login" />
 }
 
+
 export const UserPrivateRoutes = () => {
     const auth = localStorage.getItem("token");
     // console.log(auth, localStorage.getItem("token"));
