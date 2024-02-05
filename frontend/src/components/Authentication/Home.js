@@ -9,6 +9,7 @@ function Home() {
   const [role, setRole] = useState('');
   const [auth, setAuth] = useState(false);
 
+  
   useEffect(() => {
     axios.get("http://localhost:8080/")
       .then(res => {
