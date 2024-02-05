@@ -26,7 +26,7 @@ const EditMovie = ({ movie, handleClose }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/admin/editmovie/${movie.id}`, editedMovie)
+      await axios.put(`https://movie-booking-backend-node.onrender.com/admin/editmovie/${movie.id}`, editedMovie)
         .then(window.location.reload())
       handleClose();
     } catch (error) {

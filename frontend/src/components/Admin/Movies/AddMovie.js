@@ -23,7 +23,7 @@ function AddMovie() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("http://localhost:8080/admin/addMovie", values)
+      .post("https://movie-booking-backend-node.onrender.com/admin/addMovie", values)
       .then((res) => {
         console.log(res);
         alert("Movie uploaded")

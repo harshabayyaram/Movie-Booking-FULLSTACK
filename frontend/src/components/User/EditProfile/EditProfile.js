@@ -14,7 +14,7 @@ function EditProfile() {
   });
 
   useEffect(() => {
-    axios.get("http://localhost:8080/admin/users/" + loggedUser)
+    axios.get("https://movie-booking-backend-node.onrender.com/admin/users/" + loggedUser)
       .then(response => {
         setUser(response.data);
         const userData = response.data[0];
@@ -41,7 +41,7 @@ function EditProfile() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`http://localhost:8080/user/editUser/${loggedUser}`, editedUser)
+      await axios.put(`https://movie-booking-backend-node.onrender.com/user/editUser/${loggedUser}`, editedUser)
         .then(console.log("User Details Edited"))
         .then(window.location.reload())
     }

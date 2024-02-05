@@ -7,7 +7,7 @@ function ManageBookings() {
   const [bookings, setBookings] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:8080/admin/managebookings')
+    axios.get('https://movie-booking-backend-node.onrender.com/admin/managebookings')
       .then(response => {
         setBookings(response.data);
       })

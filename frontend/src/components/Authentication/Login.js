@@ -30,7 +30,7 @@ function Login() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.email === "" && errors.password === "") {
-      Axios.post("http://localhost:8080/login", values)
+      Axios.post("https://movie-booking-backend-node.onrender.com/login", values)
         .then(res => {
           console.log("res data" + res.data);
           if (res.data.login) {

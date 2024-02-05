@@ -5,7 +5,7 @@ import { Navbar, Container, Nav } from 'react-bootstrap';
 
 function AdminMenuBar() {
   const handleLogout = () => {
-    Axios.get("http://localhost:8080/logout")
+    Axios.get("https://movie-booking-backend-node.onrender.com/logout")
       .then(res => {
         window.location.reload();
         localStorage.clear();

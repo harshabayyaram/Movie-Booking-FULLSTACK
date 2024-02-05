@@ -8,7 +8,7 @@ const UserList = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/admin/users')
+        axios.get('https://movie-booking-backend-node.onrender.com/admin/users')
             .then(response => {
                 setUsers(response.data);
             })
@@ -19,7 +19,7 @@ const UserList = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`http://localhost:8080/admin/users/${id}`);
+            await axios.delete(`https://movie-booking-backend-node.onrender.com/admin/users/${id}`);
             setUsers(users.filter(user => user.id !== id)); // Update the state to remove the deleted user without reloading the page
         } catch (error) {
             console.error('Error deleting user:', error);

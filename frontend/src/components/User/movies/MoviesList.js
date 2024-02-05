@@ -9,7 +9,7 @@ const MoviesList = () => {
 
     useEffect(() => {
         // Fetch movies data
-        axios.get('http://localhost:8080/admin/movies')
+        axios.get('https://movie-booking-backend-node.onrender.com/admin/movies')
             .then(response => {
                 setMovies(response.data); // Set fetched movies to state
             })

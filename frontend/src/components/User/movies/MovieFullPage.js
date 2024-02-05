@@ -15,7 +15,7 @@ function MovieFullPage() {
 
     useEffect(() => {
         console.log(movieid);
-        const apiUrl = `http://localhost:8080/user/selectMovie/${movieid}`;
+        const apiUrl = `https://movie-booking-backend-node.onrender.com/user/selectMovie/${movieid}`;
         axios.get(apiUrl)
             .then(response => {
                 setMovie(response.data);
@@ -27,7 +27,7 @@ function MovieFullPage() {
 
     // const handleBookTicket = () => {
     //     const values = [loggedInUserId, movieid];
-    //     axios.post("http://localhost:8080/user/book-ticket", values)
+    //     axios.post("https://movie-booking-backend-node.onrender.com/user/book-ticket", values)
     //         .then(res => {
     //             console.log("posted from frontend");
     //             alert("Movie ticket Booked");

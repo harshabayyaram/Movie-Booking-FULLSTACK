@@ -13,7 +13,7 @@ function UserMenuBar() {
     const [user, setUser] = useState([]);
     const id = localStorage.getItem("userId");
     useEffect(() => {
-        axios.get('http://localhost:8080/admin/users/' + id)
+        axios.get('https://movie-booking-backend-node.onrender.com/admin/users/' + id)
             .then(response => {
                 setUser(response.data);
                 console.log(response.data);
@@ -29,7 +29,7 @@ function UserMenuBar() {
         setSearch(searchTerm);
 
         try {
-            const response = await axios.get('http://localhost:8080/admin/movies');
+            const response = await axios.get('https://movie-booking-backend-node.onrender.com/admin/movies');
             const fetchedMovies = response.data;
 
             if (searchTerm.trim() === '') {
@@ -47,7 +47,7 @@ function UserMenuBar() {
     }
 
     const handleLogout = () => {
-        Axios.get("http://localhost:8080/logout")
+        Axios.get("https://movie-booking-backend-node.onrender.com/logout")
             .then(res => {
                 alert("thank you for using our service we don't store any information of yours")
                 window.location.reload();

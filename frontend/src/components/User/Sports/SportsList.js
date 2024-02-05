@@ -8,7 +8,7 @@ const SportsList = () => {
 
     useEffect(() => {
         // Fetch events data
-        axios.get('http://localhost:8080/user/sports')
+        axios.get('https://movie-booking-backend-node.onrender.com/user/sports')
             .then(response => {
                 setSports(response.data); // Set fetched movies to state
             })

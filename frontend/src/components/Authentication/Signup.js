@@ -27,7 +27,7 @@ function Signup() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.name === "" && errors.email === "" && errors.password === "") {
-      Axios.post("http://localhost:8080/signup", values)
+      Axios.post("https://movie-booking-backend-node.onrender.com/signup", values)
         .then(res => {
           navigate("/");
           console.log("posted from frontend");
