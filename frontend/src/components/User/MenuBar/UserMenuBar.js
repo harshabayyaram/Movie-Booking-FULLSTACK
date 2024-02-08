@@ -65,7 +65,7 @@ function UserMenuBar() {
             <Navbar bg="d-flex">
                 <Container className='d-flex justify-content-between'>
                     <div>
-                        <Navbar.Brand href="/">PVR Booking</Navbar.Brand>
+                        <Navbar.Brand as={Link} to="/">PVR Booking</Navbar.Brand>
                     </div>
                     <div className="w-100" style={{ position: 'relative' }}>
                         <input
@@ -94,13 +94,13 @@ function UserMenuBar() {
                     <div className='d-flex'>
                         <Navbar.Collapse id="basic-navbar-nav">
                             <Nav className="ml-auto">
-                                <Nav.Link href="/">Home</Nav.Link>
-                                <Nav.Link href="/user/about">About</Nav.Link>
+                                <Nav.Link as={Link} to="/">Home</Nav.Link>
+                                <Nav.Link as={Link} to="/user/about">About</Nav.Link>
                                 {/* <NavDropdown title="Services" id="basic-nav-dropdown">
                                     <Nav.Link href="/user/bookings" >My Bookings</Nav.Link>
                                     <Nav.Link href="/" >Profile</Nav.Link>
                                 </NavDropdown> */}
-                                <Nav.Link href="/user/contact">Contact</Nav.Link>
+                                <Nav.Link as={Link} to="/user/contact">Contact</Nav.Link>
                             </Nav>
                         </Navbar.Collapse>
                         <Nav className='ms-auto'>
@@ -161,18 +161,18 @@ function UserMenuBar() {
                 <Container className='d-flex justify-content-between'>
                     <div>
                         <Nav className="">
-                            <Nav.Link href="/">Movies</Nav.Link>
-                            <Nav.Link href="/user/streams">Streams</Nav.Link>
-                            <Nav.Link href="/user/events">Events</Nav.Link>
-                            <Nav.Link href="/user/sports">Sports</Nav.Link>
-                            <Nav.Link href="/user/activities">Activities</Nav.Link>
+                            <Nav.Link as={Link} to="/">Movies</Nav.Link>
+                            <Nav.Link as={Link} to="/user/streams">Streams</Nav.Link>
+                            <Nav.Link as={Link} to="/user/events">Events</Nav.Link>
+                            <Nav.Link as={Link} to="/user/sports">Sports</Nav.Link>
+                            <Nav.Link as={Link} to="/user/activities">Activities</Nav.Link>
                         </Nav>
                     </div>
                     <div className='d-flex'>
                         <Nav >
-                            <Nav.Link href="/user/gift-cards">Gift cards</Nav.Link>
-                            <Nav.Link href="/user/offers">Offers</Nav.Link>
-                            <Nav.Link href="/user/list-your-show">ListYourShow</Nav.Link>
+                            <Nav.Link as={Link} to="/user/gift-cards">Gift cards</Nav.Link>
+                            <Nav.Link as={Link} to="/user/offers">Offers</Nav.Link>
+                            <Nav.Link as={Link} to="/user/list-your-show">ListYourShow</Nav.Link>
                         </Nav>
                     </div>
                 </Container>

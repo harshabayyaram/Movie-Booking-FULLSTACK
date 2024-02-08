@@ -1,6 +1,7 @@
 import React from 'react'
 import UserMenuBar from '../MenuBar/UserMenuBar'
 import './About.css'; // Import the CSS file for styling
+import Footer from '../Footer/Footer';
 
 const About = () => {
   return (
@@ -16,6 +17,7 @@ const About = () => {
           <p>Feel free to explore our app and make the most of your movie-watching experience!</p>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

@@ -96,7 +96,7 @@ function Signup() {
           </Link>
 
         </form>
-        <div className="d-flex justify-content-center pt-4 text-secondary">I agree to the -<a href="/terms-and-conditions"> terms and conditions</a> & <a href="/privacy-policy">Privacy</a></div>
+        <div className="d-flex justify-content-center pt-4 text-secondary">I agree to the -<Link to="/terms-and-conditions"> terms and conditions</Link> & <Link to="/privacy-policy">Privacy</Link></div>
       </div>
     </div>
   );

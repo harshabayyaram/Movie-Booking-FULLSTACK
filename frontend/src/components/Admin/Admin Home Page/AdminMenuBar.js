@@ -2,6 +2,7 @@ import Axios from 'axios';
 import React from 'react'
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 function AdminMenuBar() {
   const handleLogout = () => {
@@ -16,7 +17,7 @@ function AdminMenuBar() {
     <>
       <Navbar bg="primary d-flex justify-content-between" data-bs-theme="dark">
         <Container>
-          <Navbar.Brand href="#home">Cinema Booking</Navbar.Brand>
+          <Navbar.Brand as={Link} to="/">Cinema Booking</Navbar.Brand>
           <Nav className="ms-auto">
             <Nav.Link ><button className='btn btn-danger' onClick={handleLogout}>Logout</button></Nav.Link>
           </Nav>

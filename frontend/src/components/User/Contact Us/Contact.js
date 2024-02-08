@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import './Contact.css';
 import UserMenuBar from '../MenuBar/UserMenuBar';
+import Footer from '../Footer/Footer';
 
 
 
@@ -45,6 +46,7 @@ const Contact = () => {
           </form>
         </div>
       </div>
+      <Footer />
     </div>
   );
 }
