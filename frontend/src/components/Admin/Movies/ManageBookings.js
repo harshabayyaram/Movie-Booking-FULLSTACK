@@ -2,19 +2,25 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Sidebar from '../Side Bar/SideBar';
 import AdminMenuBar from '../Admin Home Page/AdminMenuBar';
+import { BASEURL } from '../../config/baseuUrl';
 
 function ManageBookings() {
   const [bookings, setBookings] = useState([]);
+  const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios.get('https://movie-booking-backend-node.onrender.com/admin/managebookings')
+    axios.get(`${BASEURL}/admin/managebookings`, {
+      headers: {
+        Authorization: `Bearer ${token}` // Add the token to the request headers
+      }
+    })
       .then(response => {
         setBookings(response.data);
       })
       .catch(error => {
         console.error('Error fetching users:', error);
       });
-  }, []);
+  }, [token]);
   console.log(bookings);
 
   return (

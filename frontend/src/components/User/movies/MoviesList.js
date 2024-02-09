@@ -3,13 +3,19 @@ import axios from 'axios';
 import { Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./MovieList.css";
+import { BASEURL } from '../../config/baseuUrl';
 
 const MoviesList = () => {
     const [movies, setMovies] = useState([]); // Define movies state
 
     useEffect(() => {
         // Fetch movies data
-        axios.get('https://movie-booking-backend-node.onrender.com/admin/movies')
+        const token = localStorage.getItem("token");
+        axios.get(`${BASEURL}/admin/movies`, {
+            headers: {
+                Authorization: `Bearer ${token}` // Attach token to request header
+            }
+        })
             .then(response => {
                 setMovies(response.data); // Set fetched movies to state
             })

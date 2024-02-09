@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom';
 import UserMenuBar from '../MenuBar/UserMenuBar';
 import "./MovieFullPage.css"
+import { BASEURL } from '../../config/baseuUrl';
 
 function MovieFullPage() {
 
@@ -14,9 +15,14 @@ function MovieFullPage() {
     // console.log(movieid);
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         console.log(movieid);
-        const apiUrl = `https://movie-booking-backend-node.onrender.com/user/selectMovie/${movieid}`;
-        axios.get(apiUrl)
+        const apiUrl = `${BASEURL}/user/selectMovie/${movieid}`;
+        axios.get(apiUrl, {
+            headers: {
+                Authorization: `Bearer ${token}` // Attach token to request header
+            }
+        })
             .then(response => {
                 setMovie(response.data);
             })
@@ -27,7 +33,7 @@ function MovieFullPage() {
 
     // const handleBookTicket = () => {
     //     const values = [loggedInUserId, movieid];
-    //     axios.post("https://movie-booking-backend-node.onrender.com/user/book-ticket", values)
+    //     axios.post(`{BASEURL}/user/book-ticket`, values)
     //         .then(res => {
     //             console.log("posted from frontend");
     //             alert("Movie ticket Booked");
@@ -68,7 +74,7 @@ function MovieFullPage() {
                     <p>Loading...</p>
                 )}
             </div>
-{/* 
+            {/* 
             <div className='container pt-4'>
                 <div className='m-3'>
                     <h3><b>About the Movie</b></h3>

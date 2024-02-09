@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import validation from "./SignUpValidation";
 import Axios from "axios";
 import image from "../../assets/HomePageBg.jpg"
+import { BASEURL } from "../config/baseuUrl";
 
 function Signup() {
   const [values, setValues] = useState({
@@ -27,7 +28,12 @@ function Signup() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.name === "" && errors.email === "" && errors.password === "") {
-      Axios.post("https://movie-booking-backend-node.onrender.com/signup", values)
+      const token = localStorage.getItem('token');
+      Axios.post(`${BASEURL}/signup`, values, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      })
         .then(res => {
           navigate("/");
           console.log("posted from frontend");

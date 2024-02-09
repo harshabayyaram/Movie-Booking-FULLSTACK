@@ -4,6 +4,8 @@ import React, { useEffect, useState } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import "./UserMenuBar.css";
+import { BASEURL } from '../../config/baseuUrl';
+
 
 
 function UserMenuBar() {
@@ -11,9 +13,14 @@ function UserMenuBar() {
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [isMenuOpen, setIsMenuOpen] = useState(false);
     const [user, setUser] = useState([]);
+    const token = localStorage.getItem('token');
     const id = localStorage.getItem("userId");
     useEffect(() => {
-        axios.get('https://movie-booking-backend-node.onrender.com/admin/users/' + id)
+        axios.get(`${BASEURL}/admin/users/` + id, {
+            headers: {
+                Authorization: `Bearer ${token}` // Attach token to request header
+            }
+        })
             .then(response => {
                 setUser(response.data);
                 console.log(response.data);
@@ -21,7 +28,7 @@ function UserMenuBar() {
             .catch(error => {
                 console.error('Error fetching users:', error);
             });
-    }, [id]);
+    }, [id,token]);
     console.log(user[0]);
 
     const handleSearchChange = async (event) => {
@@ -29,7 +36,7 @@ function UserMenuBar() {
         setSearch(searchTerm);
 
         try {
-            const response = await axios.get('https://movie-booking-backend-node.onrender.com/admin/movies');
+            const response = await axios.get(`${BASEURL}/admin/movies`);
             const fetchedMovies = response.data;
 
             if (searchTerm.trim() === '') {
@@ -47,7 +54,7 @@ function UserMenuBar() {
     }
 
     const handleLogout = () => {
-        Axios.get("https://movie-booking-backend-node.onrender.com/logout")
+        Axios.get(`${BASEURL}/logout`)
             .then(res => {
                 alert("thank you for using our service we don't store any information of yours")
                 window.location.reload();
@@ -107,11 +114,11 @@ function UserMenuBar() {
                             <div className='z-index-100 '>
                                 <div id="app ">
                                     <div className="text position-relative">
-                                        <button className="btn btn-primary " onClick={toggleMenu}>
+                                        <button className="btn btn-primary" onClick={toggleMenu}>
                                             {user.length > 0 ? (
                                                 <small>{user[0].name}</small>
                                             ) : (
-                                                <small>Loading...</small>
+                                                <small>Loading</small>
                                             )}
                                         </button>
 
@@ -119,7 +126,7 @@ function UserMenuBar() {
                                             <div className="card text-start position-absolute" style={{ top: '40px' }}>
                                                 <div className="card-body px-4 py-4">
                                                     <div id="circle-avatar" className="text-center mx-auto mb-4">
-                                                        <span>K</span>
+                                                        {user.length>0 ?(<span>{user[0].name.charAt(0)}</span>):(<span>X</span>)}
                                                     </div>
 
                                                     <h5 className="text-center mb-0">{user[0].name}</h5>

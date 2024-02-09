@@ -1,17 +1,23 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { BASEURL } from '../../config/baseuUrl';
 
 function BookingComponent() {
 
     const [bookings, setBookings] = useState([]);
     const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
     console.log(userId);
     console.log(bookings);
 
 
     // Function to retrieve user bookings
     const getUserBookings = async () => {
-        await axios.get(`https://movie-booking-backend-node.onrender.com/user/userbookings/${userId}`)
+        await axios.get(`${BASEURL}/user/userbookings/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}` // Include JWT token in headers
+            }
+        })
             .then((response) => {
                 setBookings(response.data);
             })
@@ -21,7 +27,11 @@ function BookingComponent() {
     };
 
     const deleteBooking = (movieId) => {
-        axios.delete(`https://movie-booking-backend-node.onrender.com/user/deletebooking/${userId}/${movieId}`)
+        axios.delete(`${BASEURL}/user/deletebooking/${userId}/${movieId}`, {
+            headers: {
+                Authorization: `Bearer ${token}` // Include JWT token in headers
+            }
+        })
             .then((response) => {
                 console.log(response.data.message);
                 getUserBookings();
@@ -32,14 +42,18 @@ function BookingComponent() {
     };
 
     useEffect(() => {
-        axios.get(`https://movie-booking-backend-node.onrender.com/user/userbookings/${userId}`)
+        axios.get(`${BASEURL}/user/userbookings/${userId}`, {
+            headers: {
+                Authorization: `Bearer ${token}` // Include JWT token in headers
+            }
+        })
             .then((response) => {
                 setBookings(response.data);
             })
             .catch((error) => {
                 console.error('Error fetching bookings for single user:', error);
             });
-    }, [userId]); // Fetch bookings on component mount
+    }, [userId, token]); // Fetch bookings on component mount
 
     return (
         <div>

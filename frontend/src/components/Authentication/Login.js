@@ -5,6 +5,7 @@ import Axios from "axios";
 import image from "../../assets/HomePageBg.jpg";
 import Admin from "../Admin/Admin Home Page/Admin";
 import User from "../User/User Home Page/User";
+import { BASEURL } from "../config/baseuUrl";
 
 function Login() {
   Axios.defaults.withCredentials = true;
@@ -30,10 +31,13 @@ function Login() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.email === "" && errors.password === "") {
-      Axios.post("https://movie-booking-backend-node.onrender.com/login", values)
+      // const token = localStorage.getItem('token');
+      // console.log(token, "tokennn");
+      Axios.post(`${BASEURL}/login`, values)
         .then(res => {
           console.log("res data" + res.data);
           if (res.data.login) {
+            console.log(res.data,"asdfasdafasdaf res");
             localStorage.setItem("userId", res.data.id);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("role", res.data.role);

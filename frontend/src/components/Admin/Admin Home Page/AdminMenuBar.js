@@ -3,10 +3,16 @@ import React from 'react'
 
 import { Navbar, Container, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { BASEURL } from '../../config/baseuUrl';
 
 function AdminMenuBar() {
   const handleLogout = () => {
-    Axios.get("https://movie-booking-backend-node.onrender.com/logout")
+    const token = localStorage.getItem('token');
+    Axios.get(`${BASEURL}/logout`, {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
       .then(res => {
         window.location.reload();
         localStorage.clear();

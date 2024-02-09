@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import UserMenuBar from '../MenuBar/UserMenuBar';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { BASEURL } from '../../config/baseuUrl';
 
 function MovieSeatInfo() {
     const loggedInUserId = localStorage.getItem("userId");
@@ -10,22 +11,27 @@ function MovieSeatInfo() {
     const [movie, setMovie] = useState([]);
     const [selectedDate, setSelectedDate] = useState('27-01-2024');
     const [selectedTime, setSelectedTime] = useState('10:00 AM');
-
+    const token = localStorage.getItem('token');
     console.log(movie);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
+        // const token = localStorage.getItem('token');
         console.log(movieid);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-        const apiUrl = `https://movie-booking-backend-node.onrender.com/user/selectMovie/${movieid}`;
-        axios.get(apiUrl)
+        const apiUrl = `${BASEURL}/user/selectMovie/${movieid}`;
+        axios.get(apiUrl, {
+            headers: {
+                Authorization: `Bearer ${token}` // Include JWT token in headers
+            }
+        })
             .then(response => {
                 setMovie(response.data);
             })
             .catch(error => {
                 console.error('Error Selecting Particular movie', error);
             });
-    }, [movieid]);
+    }, [movieid, token]);
 
     const handleInput = (event) => {
         setFormData(prev => ({
@@ -37,7 +43,11 @@ function MovieSeatInfo() {
     const handleSubmit = () => {
         const values = [loggedInUserId, movieid, selectedDate, selectedTime, formData.seatNumber];
         console.log(loggedInUserId, movieid, selectedDate, formData.time, formData.seatNumber);
-        axios.post("https://movie-booking-backend-node.onrender.com/user/book-ticket", values)
+        axios.post(`${BASEURL}/user/book-ticket`, values, {
+            headers: {
+                Authorization: `Bearer ${token}` // Include JWT token in headers
+            }
+        })
             .then(res => {
                 console.log("posted from frontend");
             })
@@ -93,4 +103,4 @@ function MovieSeatInfo() {
     )
 }
 
-export default MovieSeatInfo
+export default MovieSeatInfo;

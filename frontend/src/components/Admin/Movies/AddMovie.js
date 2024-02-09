@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import axios from 'axios';
+import { BASEURL } from '../../config/baseuUrl';
 
 function AddMovie() {
   const [values, setValues] = useState({
@@ -23,7 +24,11 @@ function AddMovie() {
   const handleSubmit = (event) => {
     event.preventDefault();
     axios
-      .post("https://movie-booking-backend-node.onrender.com/admin/addMovie", values)
+      .post(`${BASEURL}/admin/addMovie`, values, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`, // Include authorization token
+        },
+      })
       .then((res) => {
         console.log(res);
         alert("Movie uploaded")

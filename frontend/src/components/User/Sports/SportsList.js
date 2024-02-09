@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { BASEURL } from '../../config/baseuUrl';
 
 const SportsList = () => {
     const [sports, setSports] = useState([]); // Define movies state
 
     useEffect(() => {
         // Fetch events data
-        axios.get('https://movie-booking-backend-node.onrender.com/user/sports')
+        const token = localStorage.getItem('token');
+        axios.get(`${BASEURL}/user/sports`, {
+            headers: {
+                Authorization: `Bearer ${token}` // Include the JWT token in the request headers
+            }
+        })
             .then(response => {
                 setSports(response.data); // Set fetched movies to state
             })

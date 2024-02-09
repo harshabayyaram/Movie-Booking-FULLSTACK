@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Sidebar from '../Side Bar/SideBar';
 import AdminMenuBar from '../Admin Home Page/AdminMenuBar';
+import { BASEURL } from '../../config/baseuUrl';
 
 
 const UserList = () => {
     const [users, setUsers] = useState([]);
 
     useEffect(() => {
-        axios.get('https://movie-booking-backend-node.onrender.com/admin/users')
+        const token = localStorage.getItem('token');
+        axios.get(`${BASEURL}/admin/users`, {
+            headers: {
+                Authorization: `Bearer ${token}` // Add the token to the request headers
+            }
+        })
             .then(response => {
                 setUsers(response.data);
             })
@@ -19,7 +25,12 @@ const UserList = () => {
 
     const handleDelete = async (id) => {
         try {
-            await axios.delete(`https://movie-booking-backend-node.onrender.com/admin/users/${id}`);
+            const token = localStorage.getItem('token');
+            await axios.delete(`${BASEURL}/admin/users/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}` // Add the token to the request headers
+                }
+            });
             setUsers(users.filter(user => user.id !== id)); // Update the state to remove the deleted user without reloading the page
         } catch (error) {
             console.error('Error deleting user:', error);

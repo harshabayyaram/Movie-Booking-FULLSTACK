@@ -1,5 +1,6 @@
 const db = require("../db/db");
 const jwt = require("jsonwebtoken");
+require('dotenv').config();
 
 
 const signup = async (req, res) => {
@@ -35,7 +36,7 @@ const login = (req, res) => {
                 const token = jwt.sign({ name }, "jwt-secret-token", { expiresIn: '1d' });
                 res.cookie('token', token);
                 // console.log(req.cookies.token);
-                return res.json({ login: true, name: req.session.name, id: userid, role: data[0].role, token: req.cookies.token });//sending to frontend
+                return res.json({ login: true, name: name, id: userid, role: data[0].role, token: token });//sending to frontend
             } else {
                 return res.json({ login: false });
             }

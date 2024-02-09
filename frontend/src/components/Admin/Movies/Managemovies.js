@@ -5,11 +5,13 @@ import EditMovie from "./EditMovie"
 import { Button, Col, Container, Modal, Row } from 'react-bootstrap';
 import AdminMenuBar from '../Admin Home Page/AdminMenuBar';
 import SideBar from '../Side Bar/SideBar';
+import { BASEURL } from '../../config/baseuUrl';
 
 
 const Managemovies = () => {
   const [movies, setMovies] = useState([]);
   const [selectedComponent, setSelectedComponent] = useState(null);
+  const token = localStorage.getItem('token');
 
   const addMovie = () => {
     setSelectedComponent(<AddMovie />);
@@ -24,18 +26,26 @@ const Managemovies = () => {
   };
 
   useEffect(() => {
-    axios.get('https://movie-booking-backend-node.onrender.com/admin/movies')
+    axios.get(`${BASEURL}/admin/movies`, {
+      headers: {
+        Authorization: `Bearer ${token}` // Add the token to the request headers
+      }
+    })
       .then(response => {
         setMovies(response.data);
       })
       .catch(error => {
         console.error('Error fetching movies:', error);
       });
-  }, []);
+  }, [token]);
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://movie-booking-backend-node.onrender.com/admin/movies/${id}`);
+      await axios.delete(`${BASEURL}/admin/movies/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}` // Add the token to the request headers
+        }
+      });
       setMovies(movies.filter(user => user.id !== id)); // Update the state to remove the deleted user without reloading the page
     } catch (error) {
       console.error('Error deleting movies:', error);

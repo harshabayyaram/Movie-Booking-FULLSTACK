@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const userController = require("../controllers/userController")
+const userController = require("../controllers/userController");
 
 router.get('/selectMovie/:id', userController.selectMovie);
 router.post("/book-ticket", userController.bookingTicket);

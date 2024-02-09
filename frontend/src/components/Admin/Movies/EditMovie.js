@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import axios from 'axios';
+import { BASEURL } from '../../config/baseuUrl';
 
 const EditMovie = ({ movie, handleClose }) => {
   const [editedMovie, setEditedMovie] = useState({
@@ -26,7 +27,12 @@ const EditMovie = ({ movie, handleClose }) => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`https://movie-booking-backend-node.onrender.com/admin/editmovie/${movie.id}`, editedMovie)
+      const token = localStorage.getItem('token');
+      await axios.put(`${BASEURL}/admin/editmovie/${movie.id}`, editedMovie, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
         .then(window.location.reload())
       handleClose();
     } catch (error) {

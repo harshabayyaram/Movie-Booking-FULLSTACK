@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import UserMenuBar from '../MenuBar/UserMenuBar'
 import axios from 'axios';
+import { BASEURL } from '../../config/baseuUrl';
 
 function EditProfile() {
 
   const loggedUser = localStorage.getItem("userId");
+  const token = localStorage.getItem('token');
   const [user, setUser] = useState([])
   console.log(user[0]);
   const [editedUser, setEditedUser] = useState({
@@ -15,7 +17,11 @@ function EditProfile() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // eslint-disable-next-line
-    axios.get("https://movie-booking-backend-node.onrender.com/admin/users/" + loggedUser)
+    axios.get(`${BASEURL}/admin/users/` + loggedUser, {
+      headers: {
+        Authorization: `Bearer ${token}` // Attach token to request header
+      }
+    })
       .then(response => {
         setUser(response.data);
         const userData = response.data[0];
@@ -29,7 +35,7 @@ function EditProfile() {
       .catch(error => {
         console.error("error fetching users");
       })
-  }, [loggedUser])
+  }, [loggedUser,token])
 
   const handleInput = (event) => {
     const { name, value } = event.target;
@@ -42,7 +48,11 @@ function EditProfile() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.put(`https://movie-booking-backend-node.onrender.com/user/editUser/${loggedUser}`, editedUser)
+      await axios.put(`${BASEURL}/user/editUser/${loggedUser}`, editedUser, {
+        headers: {
+          Authorization: `Bearer ${token}` // Attach token to request header
+        }
+      })
         .then(console.log("User Details Edited"))
         .then(window.location.reload())
     }

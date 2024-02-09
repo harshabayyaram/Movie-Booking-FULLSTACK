@@ -2,13 +2,19 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { BASEURL } from '../../config/baseuUrl';
 
 const EventsList = () => {
     const [events, setEvents] = useState([]); // Define movies state
 
     useEffect(() => {
+        const token = localStorage.getItem('token');
         // Fetch events data
-        axios.get('https://movie-booking-backend-node.onrender.com/user/events')
+        axios.get(`${BASEURL}/user/events`, {
+            headers: {
+                Authorization: `Bearer ${token}` // Attach token to request header
+            }
+        })
             .then(response => {
                 setEvents(response.data); // Set fetched movies to state
             })

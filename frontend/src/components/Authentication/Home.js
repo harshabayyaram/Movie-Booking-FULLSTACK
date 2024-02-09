@@ -19,7 +19,7 @@ function Home() {
 
 
     // useEffect(() => {
-    //     axios.get("https://movie-booking-backend-node.onrender.com/")
+    //     axios.get(``{BASEURL}`/)
     //         .then(res => {
     //             if (res.data.valid) {
     //                 setRole(res.data.role);
