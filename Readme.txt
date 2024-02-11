@@ -1,4 +1,9 @@
+# Check Live website at : 
+## https://movie-ticket-booking-react.netlify.app/
 
+
+
+# To run in development
 
 
 Process to run the project
@@ -10,7 +15,7 @@ cd Frontend
 //in second terminal
 cd Backend
 1. npm i
-3. npm start
+3. npm run dev
 
 Database Deployed in freedb.tech ( Free trial so need to wait for 1min for database to be active after the server hits the database)
 
