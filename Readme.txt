@@ -10,8 +10,9 @@ cd Frontend
 //in second terminal
 cd Backend
 1. npm i
-2. create new database schema in sql workbench and edit database name in db.js
-3. npm start (Automatically tables are created if table is absent and some demo data is also inserted into them)
+3. npm start
+
+Database Deployed in freedb.tech ( Free trial so need to wait for 1min for database to be active after the server hits the database)
 
 NOTE: for user you can also create a account of yourself in signup page but for admin the role need to be changed manually in the sql table.
 

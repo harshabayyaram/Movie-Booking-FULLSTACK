@@ -9,7 +9,7 @@ function ManageBookings() {
   const token = localStorage.getItem("token");
 
   useEffect(() => {
-    axios.get(`${BASEURL}/admin/managebookings`, {
+    axios.get(`${BASEURL}/admin/show-bookings`, {
       headers: {
         Authorization: `Bearer ${token}` // Add the token to the request headers
       }

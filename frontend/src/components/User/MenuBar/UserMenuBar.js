@@ -16,7 +16,7 @@ function UserMenuBar() {
     const token = localStorage.getItem('token');
     const id = localStorage.getItem("userId");
     useEffect(() => {
-        axios.get(`${BASEURL}/admin/users/` + id, {
+        axios.get(`${BASEURL}/user/users/` + id, {
             headers: {
                 Authorization: `Bearer ${token}` // Attach token to request header
             }
@@ -36,7 +36,7 @@ function UserMenuBar() {
         setSearch(searchTerm);
 
         try {
-            const response = await axios.get(`${BASEURL}/admin/movies`);
+            const response = await axios.get(`${BASEURL}/user/movies`);
             const fetchedMovies = response.data;
 
             if (searchTerm.trim() === '') {

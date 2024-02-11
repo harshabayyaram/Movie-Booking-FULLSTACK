@@ -67,7 +67,6 @@ const verifyUser = (req, res, next) => {
   }
 
   const token = authHeader.split(' ')[1]; // removes bearer and takes only taken then compares it... :> )
-  // console.log(token);
   if (!token) {
     // Token is invalid or missing
     return res.status(401).json({ error: 'Unauthorized - Invalid Token' });

@@ -103,7 +103,7 @@ const sports = (req, res) => {
 const editUser = (req, res) => {
     const id = req.params.id;
     // console.log(id,"id got");
-    console.log(req.body,"bobobobobo")
+    // console.log(req.body,"bobobobobo")
     const sql = `UPDATE users SET name = ?, email = ?, password = ?,role ='user' WHERE id = ?;`
     const values = [req.body.name, req.body.email, req.body.password, id];
     db.query(sql, values, (err, data) => {
@@ -119,6 +119,28 @@ const editUser = (req, res) => {
     });
 }
 
+const userId = (req, res) => {
+    const userId = req.params.id;
+    db.query('SELECT id,name,email,role FROM users where id= ?', userId, (error, results) => {
+        if (error) {
+            res.status(500).json({ error: error.message });
+            return;
+        }
+        res.json(results);
+    });
+}
+
+
+const movies = (req, res) => {
+    db.query('SELECT * FROM movies', (error, results) => {
+        if (error) {
+            res.status(500).json({ error: error.message });
+            return;
+        }
+        res.json(results);
+    });
+}
+
 module.exports = {
     selectMovie,
     bookingTicket,
@@ -126,5 +148,7 @@ module.exports = {
     deletebooking,
     events,
     sports,
-    editUser
+    editUser,
+    userId,
+    movies
 }

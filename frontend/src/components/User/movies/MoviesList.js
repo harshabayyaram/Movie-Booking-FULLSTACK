@@ -11,7 +11,7 @@ const MoviesList = () => {
     useEffect(() => {
         // Fetch movies data
         const token = localStorage.getItem("token");
-        axios.get(`${BASEURL}/admin/movies`, {
+        axios.get(`${BASEURL}/user/movies`, {
             headers: {
                 Authorization: `Bearer ${token}` // Attach token to request header
             }

@@ -8,11 +8,9 @@ const signup = async (req, res) => {
     const values = [req.body.name, req.body.email, req.body.password];
     db.query(sql, values, (err, data) => {
         if (err) {
-            //console.log("Error in backend post", err);
             return res.json("error");
         }
         else {
-            //console.log("Data moved to data base from backend");
             return res.json(data);
         }
     });

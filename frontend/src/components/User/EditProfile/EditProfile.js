@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import UserMenuBar from '../MenuBar/UserMenuBar'
 import axios from 'axios';
 import { BASEURL } from '../../config/baseuUrl';
+import Footer from '../Footer/Footer';
 
 function EditProfile() {
 
@@ -17,7 +18,7 @@ function EditProfile() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     // eslint-disable-next-line
-    axios.get(`${BASEURL}/admin/users/` + loggedUser, {
+    axios.get(`${BASEURL}/user/users/` + loggedUser, {
       headers: {
         Authorization: `Bearer ${token}` // Attach token to request header
       }
@@ -28,7 +29,7 @@ function EditProfile() {
         setEditedUser({
           name: userData.name,
           email: userData.email,
-          password: userData.password
+          password: ''
         });
         console.log(response.data);
       })
@@ -64,9 +65,9 @@ function EditProfile() {
   return (
     <div>
       <UserMenuBar />
-      <div>
+      <div className='m-4'>
         <h5 className='text-center'>Edit Your profile</h5>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div className='w-50'>
             <label>Name</label>
             <input type='text' name='name' className='form-control' onChange={handleInput} value={editedUser.name} />
@@ -76,12 +77,13 @@ function EditProfile() {
             <input type='email' name='email' className='form-control' onChange={handleInput} value={editedUser.email} />
           </div>
           <div className='w-50'>
-            <label>Password</label>
-            <input type='Password' name='password' className='form-control' onChange={handleInput} value={editedUser.password} />
+            <label>Enter New Password</label>
+            <input type='Password' name='password' className='form-control' onChange={handleInput} value={editedUser.password} minLength={8} required placeholder='New password'/>
           </div>
-          <button className='btn btn-success' onClick={handleSubmit}>Update Details</button>
+          <button className='btn btn-success'>Update Details</button>
         </form>
       </div>
+      <Footer />
     </div>
   )
 }
