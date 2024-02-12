@@ -16,9 +16,9 @@ const selectMovie = (req, res) => {
 
 const bookingTicket = (req, res) => {
     const sql = "INSERT INTO userandmovies (userId, movieId, date, time, seatNumber) VALUES (?, ?, ?, ?, ?)";
-    // console.log(req.body);
+    console.log(req.body,"first val");
     const userId = req.body[0];
-    const movieId = req.body[1][0];
+    const movieId = req.body[1];
     const date = req.body[2];
     const time = req.body[3];
     const seatNumber = req.body[4][0];

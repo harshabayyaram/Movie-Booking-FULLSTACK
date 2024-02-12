@@ -49,6 +49,7 @@ function BookingComponent() {
         })
             .then((response) => {
                 setBookings(response.data);
+                console.log(response.data,"data from /user/userbooking/:id");
             })
             .catch((error) => {
                 console.error('Error fetching bookings for single user:', error);
@@ -64,7 +65,7 @@ function BookingComponent() {
                     <table className='table'>
                         <thead>
                             <tr>
-                                <th className='bg-black text-white' >Movie ID</th>
+                                {/* <th className='bg-black text-white' >Movie ID</th> */}
                                 <th className='bg-black text-white' >Movie Name</th>
                                 <th className='bg-black text-white' >Date</th>
                                 <th className='bg-black text-white' >Time</th>
@@ -74,7 +75,7 @@ function BookingComponent() {
                         <tbody>
                             {bookings.map((booking) => (
                                 <tr key={booking.userId}>
-                                    <td>{booking.movieId}</td>
+                                    {/* <td>{booking.movieId}</td> */}
                                     <td>{booking.movieName}</td>
                                     <td>{booking.date}</td>
                                     <td>{booking.time}</td>

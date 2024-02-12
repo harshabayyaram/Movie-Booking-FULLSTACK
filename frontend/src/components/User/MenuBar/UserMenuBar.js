@@ -36,7 +36,11 @@ function UserMenuBar() {
         setSearch(searchTerm);
 
         try {
-            const response = await axios.get(`${BASEURL}/user/movies`);
+            const response = await axios.get(`${BASEURL}/user/movies`,{
+                headers : {
+                    Authorization: `Bearer ${token}`
+                }
+            });
             const fetchedMovies = response.data;
 
             if (searchTerm.trim() === '') {

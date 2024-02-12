@@ -37,12 +37,12 @@ function ManageBookings() {
               <table className='table'>
                 <thead>
                   <tr>
-                    <th className='bg-black text-white'>user_name</th>
-                    <th className='bg-black text-white'>movie_name</th>
-                    <th className='bg-black text-white d-flex justify-content-center text-align-center'>movie_date</th>
-                    <th className='bg-black text-white'>movie_time</th>
+                    <th className='bg-black text-white'>User name</th>
+                    <th className='bg-black text-white'>Movie</th>
+                    <th className='bg-black text-white d-flex justify-content-center text-align-center'>Date</th>
+                    <th className='bg-black text-white'>Time</th>
                     <th className='bg-black text-white'>Number of seats</th>
-                    <th className='bg-black text-white'>Total_amount</th>
+                    <th className='bg-black text-white'>Total amount</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -68,4 +68,4 @@ function ManageBookings() {
   )
 }
 
-export default ManageBookings
+export default ManageBookings;
