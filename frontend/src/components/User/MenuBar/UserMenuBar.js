@@ -153,8 +153,8 @@ function UserMenuBar() {
                                                     <hr style={{ margin: "0 -24px 24px" }} />
 
                                                     <div className="d-grid">
-                                                        <button className="btn btn-secondary" onClick={toggleMenu}>
-                                                            <small onClick={handleLogout}>Logout</small>
+                                                        <button className="btn btn-secondary"  onClick={handleLogout}s>
+                                                            <small>Logout</small>
                                                         </button>
                                                     </div>
                                                 </div>

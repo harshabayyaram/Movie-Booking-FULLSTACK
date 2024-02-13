@@ -32,6 +32,15 @@ function App() {
         <Route path="/signup" element={<Signup />}></Route>
         <Route path="/terms-and-conditions" element={<TermsAndConditions />}></Route>
         <Route path="/privacy-policy" element={<PrivacyPolicy />}></Route>
+        <Route path="/user/about" Component={About}></Route>
+        <Route path="/user/contact" Component={Contact}></Route>
+        <Route path="/user/streams" Component={Streams}></Route>
+        <Route path="/user/gift-cards" Component={GiftCards}></Route>
+        <Route path="/user/offers" Component={Offers}></Route>
+        <Route path="/user/events" Component={Events}></Route>
+        <Route path="/user/activities" Component={Activities}></Route>
+        <Route path="/user/sports" Component={Sports}></Route>
+        
 
         {/* Admin Routes  */}
         <Route path="/admin/manage_movies" element={<AdminPrivateRoutes />}>
@@ -45,36 +54,36 @@ function App() {
         </Route>
 
         {/* User Routes  */}
-        <Route path="/user/about" element={<UserPrivateRoutes />}>
+        {/* <Route path="/user/about" element={<UserPrivateRoutes />}>
           <Route path="/user/about" Component={About}></Route>
-        </Route>
-        <Route path="/user/contact" element={<UserPrivateRoutes />}>
+        </Route> */}
+        {/* <Route path="/user/contact" element={<UserPrivateRoutes />}>
           <Route path="/user/contact" Component={Contact}></Route>
-        </Route>
+        </Route> */}
         <Route path="/user/bookings" element={<UserPrivateRoutes />}>
           <Route path="/user/bookings" Component={UserBookingList}></Route>
         </Route>
         <Route path="/user/movies/:id" element={<UserPrivateRoutes />}>
           <Route path="/user/movies/:id" Component={MovieFullPage}></Route>
         </Route>
-        <Route path="/user/sports" element={<UserPrivateRoutes />}>
+        {/* <Route path="/user/sports" element={<UserPrivateRoutes />}>
           <Route path="/user/sports" Component={Sports}></Route>
-        </Route>
-        <Route path="/user/activities" element={<UserPrivateRoutes />}>
+        </Route> */}
+        {/* <Route path="/user/activities" element={<UserPrivateRoutes />}>
           <Route path="/user/activities" Component={Activities}></Route>
-        </Route>
-        <Route path="/user/events" element={<UserPrivateRoutes />}>
+        </Route> */}
+        {/* <Route path="/user/events" element={<UserPrivateRoutes />}>
           <Route path="/user/events" Component={Events}></Route>
-        </Route>
-        <Route path="/user/streams" element={<UserPrivateRoutes />}>
+        </Route> */}
+        {/* <Route path="/user/streams" element={<UserPrivateRoutes />}>
           <Route path="/user/streams" Component={Streams}></Route>
-        </Route>
-        <Route path="/user/gift-cards" element={<UserPrivateRoutes />}>
+        </Route> */}
+        {/* <Route path="/user/gift-cards" element={<UserPrivateRoutes />}>
           <Route path="/user/gift-cards" Component={GiftCards}></Route>
-        </Route>
-        <Route path="/user/offers" element={<UserPrivateRoutes />}>
+        </Route> */}
+        {/* <Route path="/user/offers" element={<UserPrivateRoutes />}>
           <Route path="/user/offers" Component={Offers}></Route>
-        </Route>
+        </Route> */}
         <Route path="/user/list-your-show" element={<UserPrivateRoutes />}>
           <Route path="/user/list-your-show" Component={ListYourShow}></Route>
         </Route>

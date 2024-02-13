@@ -9,6 +9,7 @@ const bodyParser = require("body-parser");
 const authRoutes = require("./routes/authRoutes");
 const adminRoutes = require("./routes/adminRoutes");
 const userRoutes = require("./routes/userRoutes");
+const publicRoutes = require("./routes/publicRoutes");
 const jwt = require("jsonwebtoken");
 
 require('dotenv').config();
@@ -100,6 +101,7 @@ app.get("/", verifyUser, (req, res) => {
 app.use("/", authRoutes);
 app.use("/admin", verifyUser, adminRoutes);
 app.use("/user", verifyUser, userRoutes);
+app.use("/public", publicRoutes);
 
 db.query("select 1", (err, res) => {
   if (err) {

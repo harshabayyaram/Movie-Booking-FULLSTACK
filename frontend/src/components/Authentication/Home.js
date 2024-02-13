@@ -2,7 +2,8 @@ import Axios from "axios";
 import React, { useEffect, useState } from 'react'
 import Admin from "../Admin/Admin Home Page/Admin";
 import User from "../User/User Home Page/User";
-import Login from "./Login";
+import PublicMainHomePage from "../Home page/PublicMainHomePage";
+import PublicMenuBar from "../Home page/PublicMenuBar";
 
 function Home() {
     const [role, setRole] = useState('');
@@ -38,7 +39,12 @@ function Home() {
     Axios.defaults.withCredentials = true;
 
     if (!auth) {
-        return <Login />
+        return (
+            <>
+                <PublicMenuBar />
+                <PublicMainHomePage />
+            </>
+        )
     }
 
     if (role === 'user') {
