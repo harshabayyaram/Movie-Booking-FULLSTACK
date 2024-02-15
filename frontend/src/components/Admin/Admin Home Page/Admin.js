@@ -8,7 +8,7 @@ function Admin() {
     <div>
       <Menubar />
       <div className='d-flex col-lg-12'>
-        <div col-lg-3>
+        <div col-lg-3 style={{height: '100vh'}}>
           <SideBar />
         </div>
         <div col-lg-9>

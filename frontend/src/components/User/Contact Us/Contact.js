@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Contact.css';
 import UserMenuBar from '../MenuBar/UserMenuBar';
 import Footer from '../Footer/Footer';
+import PublicMenuBar from '../../Home page/PublicMenuBar';
 
 
 
@@ -22,10 +23,11 @@ const Contact = () => {
       window.location.reload();
     }
   }
+  const token = localStorage.getItem("token");
   return (
     <div>
       <div>
-        <UserMenuBar />
+        {token ? (<UserMenuBar />) : (<PublicMenuBar />)}
       </div>
       <div className="contact-container">
         <div className="contact-content">

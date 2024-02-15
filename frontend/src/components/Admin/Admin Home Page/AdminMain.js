@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Row, Col} from 'react-bootstrap';
+import { Card, Row, Col } from 'react-bootstrap';
 
 import { Link } from 'react-router-dom';
 
@@ -12,7 +12,7 @@ function AdminBodyPopup() {
             <div className='m-5'>
                 <Row>
                     <Col className='p-4'>
-                        <Card style={{ width: '18rem' }}>
+                        <Card style={{ width: '18rem', position: 'relative', top: '0%' }}>
                             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                             <Card.Body>
                                 <Card.Title>Check Booking details</Card.Title>
@@ -24,8 +24,8 @@ function AdminBodyPopup() {
                         </Card>
                     </Col>
 
-                    <Col  className='p-4'>
-                        <Card style={{ width: '18rem' }}>
+                    <Col className='p-4'>
+                        <Card style={{ width: '18rem', position: 'relative', top: '0%' }}>
                             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                             <Card.Body>
                                 <Card.Title>Manage Users</Card.Title>
@@ -37,8 +37,8 @@ function AdminBodyPopup() {
                         </Card>
                     </Col>
 
-                    <Col  className='p-4' >
-                        <Card style={{ width: '18rem' }}>
+                    <Col className='p-4' >
+                        <Card style={{ width: '18rem', position: 'relative', top: '0%' }}>
                             {/* <Card.Img variant="top" src="holder.js/100px180" /> */}
                             <Card.Body>
                                 <Card.Title>Manage Movies</Card.Title>

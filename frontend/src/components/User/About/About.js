@@ -2,12 +2,14 @@ import React from 'react'
 import UserMenuBar from '../MenuBar/UserMenuBar'
 import './About.css'; // Import the CSS file for styling
 import Footer from '../Footer/Footer';
+import PublicMenuBar from '../../Home page/PublicMenuBar';
 
 const About = () => {
+  const token = localStorage.getItem("token")
   return (
     <div>
       <div>
-        <UserMenuBar />
+        {token ? (<UserMenuBar />) : (<PublicMenuBar />)}
       </div>
       <div className="about-us-container">
         <div className="about-us-content">
@@ -17,7 +19,7 @@ const About = () => {
           <p>Feel free to explore our app and make the most of your movie-watching experience!</p>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
