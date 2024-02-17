@@ -14,7 +14,7 @@ function validation(values) {
   if (values.password === "") {
     error.password = "Password should notbe empty";
   } else if (!password_pattern.test(values.password)) {
-    error.password = "Password did'nt match";
+    error.password = "Password error (min 8 digits)";
   } else {
     error.password = "";
   }

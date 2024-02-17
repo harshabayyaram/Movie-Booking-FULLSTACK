@@ -62,9 +62,9 @@ function MovieFullPage() {
                         <div className='col-lg-6 mt-4 pt-4'>
                             <h2 style={{ fontSize: '5rem', color: 'white' }}>{movie[0].movie_name}</h2>
                             <p style={{ fontSize: '1rem', color: 'white' }}>Hero: {movie[0].movie_actor}</p>
-                            <p style={{ fontSize: '1rem', color: 'white' }}>{movie[0].movie_time}</p>
+                            <p style={{ fontSize: '1rem', color: 'white' }}>Duration: {movie[0].movie_time} Hrs</p>
                             <p style={{ fontSize: '1rem', color: 'white' }}>{movie[0].movie_status} | {movie[0].movie_amount} ₹</p>
-                            <p style={{ fontSize: '1rem', color: 'white' }}>Rating : 8/10</p>
+                            {/* <p style={{ fontSize: '1rem', color: 'white' }}>Rating : 8/10</p> */}
                             <div className='pt-2'>
                                 <Link to={`/user/movie-seat-info/${movie[0].id}`} className='btn btn-primary' style={{ width: "10rem", height: "3rem" }}>Book Ticket</Link>
                             </div>

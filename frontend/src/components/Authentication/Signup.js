@@ -11,6 +11,8 @@ function Signup() {
     email: "",
     password: "",
   });
+  const [loading, setloading] = useState(false);
+
 
   const navigate = useNavigate();
 
@@ -28,6 +30,7 @@ function Signup() {
     event.preventDefault();
     setErrors(validation(values));
     if (errors.name === "" && errors.email === "" && errors.password === "") {
+      setloading(true);
       const token = localStorage.getItem('token');
       Axios.post(`${BASEURL}/signup`, values, {
         headers: {
@@ -35,10 +38,11 @@ function Signup() {
         }
       })
         .then(res => {
-          navigate("/");
+          navigate("/login");
           console.log("posted from frontend");
         })
         .catch(err => { console.log("Error occured posting from frontend" + err) })
+        .finally(()=> setloading(false));
     }
   };
 
@@ -89,8 +93,8 @@ function Signup() {
             {errors.password && <span className="text-danger">{errors.password}</span>}
           </div>
 
-          <button type="submit" className="btn btn-success w-100">
-            Sign Up
+          <button className="btn btn-success w-100" disabled={loading}>
+            {loading ? 'loading...':'Sign Up'}
           </button>
           <br />
           <br />

@@ -12,7 +12,7 @@ function validation(values) {
     if (values.email === "") {
       error.email = "Email should notbe empty";
     } else if (!email_pattern.test(values.email)) {
-      error.email = "Email did'nt match";
+      error.email = "Email error";
     } else {
       error.email = "";
     }
@@ -20,7 +20,7 @@ function validation(values) {
     if (values.password === "") {
       error.password = "Password should notbe empty";
     } else if (!password_pattern.test(values.password)) {
-      error.password = "Password did'nt match";
+      error.password = "Password error(minimum 8 digits)";
     } else {
       error.password = "";
     }

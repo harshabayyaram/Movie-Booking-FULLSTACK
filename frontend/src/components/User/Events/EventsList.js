@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import { BASEURL } from '../../config/baseuUrl';
 
 const EventsList = () => {
@@ -46,14 +46,14 @@ const EventsList = () => {
                         <div key={event.id} className="col-md-3 mb-4">
                             <Row>
                                 <Col>
-                                    <Link to={`/user/events/${event.id}`} className='text-decoration-none'>
+                                    {/* <Link to={`/user/events/${event.id}`} className='text-decoration-none'> */}
                                         <Card style={{ width: '15rem', position: 'relative', top: '0%' }}>
                                             <Card.Img variant="top" src={event.event_imageurl} style={{ height: '23rem' }} />
                                             <Card.Body>
                                                 <Card.Title className='text-center font-weight-bold'>{event.event_title}</Card.Title>
                                             </Card.Body>
                                         </Card>
-                                    </Link>
+                                    {/* </Link> */}
                                 </Col>
                             </Row>
                         </div>

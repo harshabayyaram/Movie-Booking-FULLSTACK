@@ -45,7 +45,7 @@ function MovieSeatInfo() {
         console.log(loggedInUserId, movieid, selectedDate, formData.time, formData.seatNumber);
         axios.post(`${BASEURL}/user/book-ticket`, values, {
             headers: {
-                Authorization: `Bearer ${token}` // Include JWT token in headers
+                Authorization: `Bearer ${token}` 
             }
         })
             .then(res => {
@@ -77,11 +77,11 @@ function MovieSeatInfo() {
                         <label htmlFor="date">Movie date</label>
                         {/* <input type='date' id="date" name="date" placeholder='Select date' className='form-control' onChange={handleInput} /> */}
                         <select className='form-control' onChange={handleDate}>
-                            <option>15-02-2024</option>
                             <option>16-02-2024</option>
                             <option>17-02-2024</option>
                             <option>18-02-2024</option>
                             <option>19-02-2024</option>
+                            <option>20-02-2024</option>
                         </select>
                         <label htmlFor="time">Movie Time</label>
                         {/* <input type='time' id="time" name="time" placeholder='Select Movie Time' className='form-control' onChange={handleInput} /> */}

@@ -50,6 +50,7 @@ function AddMovie() {
               className="form-control"
               name='movietitle'
               onChange={handleInput}
+              required
             />
           </div>
           <div className="mb-2">
@@ -60,6 +61,7 @@ function AddMovie() {
               className="form-control"
               name='movieactor'
               onChange={handleInput}
+              required
             />
           </div>
           <div className="mb-2">
@@ -70,6 +72,7 @@ function AddMovie() {
               className="form-control"
               name='movietime'
               onChange={handleInput}
+              required
             />
           </div>
           <div className="mb-2">
@@ -80,6 +83,7 @@ function AddMovie() {
               className="form-control"
               name='moviedate'
               onChange={handleInput}
+              required
             />
           </div>
           <div className="mb-2">
@@ -90,6 +94,7 @@ function AddMovie() {
               className="form-control"
               name='moviestatus'
               onChange={handleInput}
+              required
             />
           </div>
           <div className="mb-2">
@@ -100,6 +105,7 @@ function AddMovie() {
               className="form-control"
               name='movieamount'
               onChange={handleInput}
+              required
             />
           </div>
           <div className="mb-2">
@@ -110,6 +116,7 @@ function AddMovie() {
               className="form-control"
               name='imageurl'
               onChange={handleInput}
+              required
             />
           </div>
           <button className="btn btn-success" onClick={handleSubmit}>
