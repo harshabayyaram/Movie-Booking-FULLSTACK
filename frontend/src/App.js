@@ -21,6 +21,7 @@ import TermsAndConditions from "./components/Authentication/TermsAndConditions";
 import PrivacyPolicy from "./components/Authentication/PrivacyPolicy";
 import MovieSeatInfo from "./components/User/movies/MovieSeatInfo";
 import EditProfile from "./components/User/EditProfile/EditProfile";
+//harsha
 
 function App() {
   return (
