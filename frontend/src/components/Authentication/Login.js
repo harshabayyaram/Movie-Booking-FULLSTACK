@@ -6,6 +6,7 @@ import image from "../../assets/HomePageBg.jpg";
 import Admin from "../Admin/Admin Home Page/Admin";
 import User from "../User/User Home Page/User";
 import { BASEURL } from "../config/baseuUrl";
+import "./Login.css"
 
 function Login() {
   Axios.defaults.withCredentials = true;
@@ -37,7 +38,7 @@ function Login() {
         .then(res => {
           console.log("res data" + res.data);
           if (res.data.login) {
-            console.log(res.data,"asdfasdafasdaf res");
+            console.log(res.data, "asdfasdafasdaf res");
             localStorage.setItem("userId", res.data.id);
             localStorage.setItem("token", res.data.token);
             localStorage.setItem("role", res.data.role);
@@ -93,6 +94,20 @@ function Login() {
             </Link>
             <div className="d-flex justify-content-center pt-4 text-secondary">I agree to the -<Link to="/terms-and-conditions"> terms and conditions</Link> & <Link to="/privacy-policy">Privacy</Link></div>
           </form>
+        </div>
+        <div className="details">
+          <h3>Demo Login Details</h3>
+          <p>
+            Admin : <br />
+            Email : bayyaramharsha@gmail.com <br />
+            Password : bayyaramharsha@gmail.com
+          </p>
+          <p>
+            User : <br />
+            Email : manjula@gmail.com <br />
+            Password : manjula@gmail.com
+          </p>
+          Also you can create your account and login
         </div>
       </div>
     );

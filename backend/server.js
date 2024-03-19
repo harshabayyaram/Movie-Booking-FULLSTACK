@@ -19,7 +19,7 @@ const port = process.env.PORT || 8080;
 // initializeDatabase();
 
 app.use(cors({
-  origin: ["http://localhost:3000", "https://movie-ticket-booking-react.netlify.app"],
+  origin: ["http://localhost:3000", "https://movie-ticket-booking-react.netlify.app", "https://movie-booking-fullstack.vercel.app/"],
   methods: ["POST", "PUT", "GET", "DELETE"],
   credentials: true
 }));
