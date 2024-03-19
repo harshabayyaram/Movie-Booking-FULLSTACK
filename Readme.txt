@@ -1,5 +1,5 @@
 # Check Live website at : 
-## https://movie-ticket-booking-react.netlify.app/
+## https://movie-booking-fullstack.vercel.app/
 
 
 
